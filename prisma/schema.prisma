@@ -1,0 +1,163 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  
+  // url is configured in prisma.config.ts in Prisma 7
+}
+
+// -----------------------------------------------------------------------------
+// USER & LEAD MANAGEMENT
+// -----------------------------------------------------------------------------
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  STUDENT
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String   // Hashed password
+  name      String?
+  role      UserRole @default(ADMIN)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String?
+  phone     String
+  course    String?  // Name of the course they enquired about
+  message   String?
+  status    String   @default("NEW") // "NEW", "CONTACTED", "CONVERTED", "LOST"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// -----------------------------------------------------------------------------
+// COURSE MANAGEMENT & SYLLABUS
+// -----------------------------------------------------------------------------
+
+enum CourseCategory {
+  ACTING
+  WORKSHOPS
+  DANCE
+}
+
+model Course {
+  id               String          @id @default(cuid())
+  slug             String          @unique
+  name             String
+  category         CourseCategory
+  duration         String          // e.g., "1 Month", "3 Months", "On Request"
+  fee              Int?            // Nullable for "On Request"
+  blurb            String          @db.Text // Short description for cards
+  description      String?         @db.Text // Long description / details
+  image            String?         // Optional cover image URL
+  
+  // Relations
+  syllabusModules  SyllabusModule[]
+  
+  // SEO & Meta
+  tags             String[]        // e.g., ["acting", "camera", "mumbai"]
+  seoTitle         String?
+  seoDescription   String?         @db.Text
+  seoKeywords      String?
+  
+  isActive         Boolean         @default(true)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+}
+
+model SyllabusModule {
+  id                  String   @id @default(cuid())
+  courseId            String
+  course              Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  
+  title               String   // e.g., "Week 1 - Break the Hesitation", "Month 1 - BUILD"
+  description         String   @db.Text // Details about the module
+  practicalActivities String?  @db.Text // e.g., "Icebreakers, acting games..."
+  order               Int      // Used to sort modules (1, 2, 3...)
+  
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+// -----------------------------------------------------------------------------
+// FACULTY & ALUMNI
+// -----------------------------------------------------------------------------
+
+model Faculty {
+  id            String   @id @default(cuid())
+  name          String
+  role          String   // e.g., "Awardee Director, Producer & Founder"
+  bio           String   @db.Text
+  image         String?
+  
+  // Social Links (Requested for Founder, useful for others)
+  instagramUrl  String?
+  facebookUrl   String?
+  linkedinUrl   String?
+  
+  order         Int      // To control display order on the About page
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Alumni {
+  id            String   @id @default(cuid())
+  name          String
+  courseTaken   String?
+  testimonial   String?  @db.Text
+  image         String?
+  workingIn     String?  // e.g., "Currently shooting for Netflix"
+  
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// -----------------------------------------------------------------------------
+// CMS: PAGES, FAQs, & GLOBAL SITE SETTINGS
+// -----------------------------------------------------------------------------
+
+model Page {
+  id             String   @id @default(cuid())
+  slug           String   @unique // e.g., "privacy-policy", "refund-policy"
+  title          String
+  content        String   @db.Text // Rich text or Markdown content
+  
+  // SEO Management
+  seoTitle       String?
+  seoDescription String?  @db.Text
+  seoKeywords    String?
+  
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model Faq {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String   @db.Text
+  order     Int
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SiteSetting {
+  id          String   @id @default(cuid())
+  key         String   @unique // e.g., "CONTACT_PHONE", "WHATSAPP_NUMBER", "HOUSING_START_PRICE"
+  value       String   @db.Text
+  description String?  // Helper text for the admin (e.g., "Main contact number without +91")
+  updatedAt   DateTime @updatedAt
+}

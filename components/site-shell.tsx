@@ -12,63 +12,123 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // Helper to determine if a link is active
   const isActive = (path: string, exact = false) => {
     if (exact) return pathname === path;
     return pathname.startsWith(path);
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-black/10 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-4">
-        <Link href="/" className="flex items-center gap-3 transition-opacity hover:opacity-80">
-          <Image 
-            src="/logo.png" 
-            alt="Actverse Academy Logo" 
-            width={180} 
-            height={100} 
-            className="h-16 w-auto md:h-20"
+    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 md:py-3.5">
+        <Link
+          href="/"
+          className="inline-flex shrink-0 items-center rounded-md bg-black px-2.5 py-1.5 shadow-sm transition-opacity hover:opacity-90 sm:px-3"
+        >
+          <Image
+            src="/logo.png"
+            alt="Actverse Academy Logo"
+            width={180}
+            height={100}
+            className="h-10 w-auto bg-black sm:h-12 md:h-14"
             priority
           />
         </Link>
-        <nav aria-label="Main" className="hidden items-center gap-7 text-md md:flex">
-          <Link href="/" className={isActive("/", true) ? "text-cherry font-semibold" : "hover:text-cherry transition-colors"}>
+
+        <nav aria-label="Main" className="hidden items-center gap-7 text-base md:flex">
+          <Link
+            href="/"
+            className={
+              isActive("/", true)
+                ? "font-semibold text-cherry"
+                : "transition-colors hover:text-cherry"
+            }
+          >
             Home
           </Link>
-          <Link href="/about" className={isActive("/about") ? "text-cherry font-semibold" : "hover:text-cherry transition-colors"}>
-            About Us
-          </Link>
-          <Link href="/courses" className={isActive("/courses") ? "text-cherry font-semibold" : "hover:text-cherry transition-colors"}>
+          <Link
+            href="/courses"
+            className={
+              isActive("/courses")
+                ? "font-semibold text-cherry"
+                : "transition-colors hover:text-cherry"
+            }
+          >
             Courses
           </Link>
+          <Link
+            href="/about"
+            className={
+              isActive("/about")
+                ? "font-semibold text-cherry"
+                : "transition-colors hover:text-cherry"
+            }
+          >
+            About Us
+          </Link>
+          <Link
+            href="/contact"
+            className={
+              isActive("/contact")
+                ? "font-semibold text-cherry"
+                : "transition-colors hover:text-cherry"
+            }
+          >
+            Contact Us
+          </Link>
         </nav>
+
         <div className="flex items-center gap-2">
-          <Button asChild className="h-10 bg-cta px-4 text-primary-foreground hover:bg-cherry">
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+          <Button
+            asChild
+            className="h-9 bg-cta px-3 text-sm text-primary-foreground hover:bg-cherry sm:h-10 sm:px-4 sm:text-base"
+          >
+            <a href="/contact" target="_blank" rel="noreferrer">
               Enquire <ArrowUpRight className="ml-1 h-4 w-4" />
             </a>
           </Button>
-          <Button 
-            variant="ghost" 
-            size="icon" 
-            className="md:hidden" 
-            aria-label={open ? "Close menu" : "Open menu"} 
-            aria-expanded={open} 
+          <Button
+            variant="ghost"
+            size="icon"
+            className="h-9 w-9 md:hidden"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
             onClick={() => setOpen(!open)}
           >
-            {open ? <X /> : <Menu />}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
+
       {open && (
-        <nav aria-label="Mobile" className="flex flex-col gap-4 border-t border-border px-5 py-5 md:hidden">
-          <Link href="/" onClick={() => setOpen(false)} className={isActive("/", true) ? "text-cherry font-semibold" : ""}>
+        <nav
+          aria-label="Mobile"
+          className="flex flex-col gap-1 border-t border-border bg-background px-5 py-4 shadow-md md:hidden"
+        >
+          <Link
+            href="/"
+            onClick={() => setOpen(false)}
+            className={`rounded-md py-2.5 text-base ${
+              isActive("/", true) ? "font-semibold text-cherry" : "hover:text-cherry"
+            }`}
+          >
             Home
           </Link>
-          <Link href="/about" onClick={() => setOpen(false)} className={isActive("/about") ? "text-cherry font-semibold" : ""}>
+          <Link
+            href="/about"
+            onClick={() => setOpen(false)}
+            className={`rounded-md py-2.5 text-base ${
+              isActive("/about") ? "font-semibold text-cherry" : "hover:text-cherry"
+            }`}
+          >
             About Us
           </Link>
-          <Link href="/courses" onClick={() => setOpen(false)} className={isActive("/courses") ? "text-cherry font-semibold" : ""}>
+          <Link
+            href="/courses"
+            onClick={() => setOpen(false)}
+            className={`rounded-md py-2.5 text-base ${
+              isActive("/courses") ? "font-semibold text-cherry" : "hover:text-cherry"
+            }`}
+          >
             Courses
           </Link>
         </nav>
@@ -79,65 +139,91 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-border py-12">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 md:grid-cols-[1.5fr_1fr_1.5fr]">
-        <div>
-          <Link href="/" className="inline-block transition-opacity hover:opacity-80">
-            <Image 
-              src="/logo.png" 
-              alt="Actverse Academy Logo" 
-              width={200} 
-              height={67} 
-              className="h-32 w-auto"
+    <footer className="border-t border-border py-10 md:py-14">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-5 sm:grid-cols-2 md:grid-cols-[1.5fr_1fr_1.5fr] md:gap-10">
+        <div className="sm:col-span-2 md:col-span-1">
+          <Link
+            href="/"
+            className="inline-flex items-center rounded-lg bg-black px-4 py-2.5 shadow-sm transition-opacity hover:opacity-90"
+          >
+            <Image
+              src="/logo.png"
+              alt="Actverse Academy Logo"
+              width={200}
+              height={67}
+              className="h-16 w-auto sm:h-20 md:h-24"
             />
           </Link>
-          <p className="mt-4 max-w-xs text-muted-foreground leading-relaxed">
-            Today’s dreamers.<br />
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Today’s dreamers.
+            <br />
             Tomorrow’s superstars.
           </p>
         </div>
-        <nav aria-label="Footer" className="flex flex-col gap-4">
+
+        <nav aria-label="Footer" className="flex flex-col gap-3 text-sm sm:text-base">
           <h4 className="font-display text-lg font-bold text-cherry">Quick Links</h4>
-          <Link href="/" className="hover:text-cherry transition-colors">Home</Link>
-          <Link href="/about" className="hover:text-cherry transition-colors">About Us</Link>
-          <Link href="/courses" className="hover:text-cherry transition-colors">Courses & Fees</Link>
+          <Link href="/" className="w-fit transition-colors hover:text-cherry">
+            Home
+          </Link>
+          <Link href="/about" className="w-fit transition-colors hover:text-cherry">
+            About Us
+          </Link>
+          <Link href="/courses" className="w-fit transition-colors hover:text-cherry">
+            Courses & Fees
+          </Link>
         </nav>
-        <div className="space-y-4 text-sm">
+
+        <div className="space-y-3.5 text-sm sm:text-base">
           <h4 className="font-display text-lg font-bold text-cherry">Contact Us</h4>
-          <a className="flex items-center gap-3 hover:text-cherry transition-colors" href={`tel:+91${PHONE}`}>
-            <Phone className="h-4 w-4 text-cherry" />+91 {PHONE}
+          <a
+            className="flex w-fit items-center gap-3 transition-colors hover:text-cherry"
+            href={`tel:+91${PHONE}`}
+          >
+            <Phone className="h-4 w-4 shrink-0 text-cherry" />
+            +91 {PHONE}
           </a>
-          <a className="flex items-center gap-3 break-all hover:text-cherry transition-colors" href={`mailto:${EMAIL}`}>
-            <Mail className="h-4 w-4 shrink-0 text-cherry" />{EMAIL}
+          <a
+            className="flex w-fit items-center gap-3 break-all transition-colors hover:text-cherry"
+            href={`mailto:${EMAIL}`}
+          >
+            <Mail className="h-4 w-4 shrink-0 text-cherry" />
+            {EMAIL}
           </a>
           <div className="flex items-start gap-3 text-muted-foreground">
-            <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-cherry" />
+            <MapPin className="mt-1 h-4 w-4 shrink-0 text-cherry" />
             <p className="leading-relaxed">
-              Bungalow No. 39, 
-<br />
-              35/2, D-Mart lane, Aram Nagar Part 2, Jeet Nagar, <br />
+              Bungalow No. 39,
+              <br />
+              35/2, D-Mart lane, Aram Nagar Part 2, Jeet Nagar,
+              <br />
               Versova, Andheri West, Mumbai, Maharashtra 400061
             </p>
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-12 max-w-7xl border-t border-border px-5 pt-6 flex flex-col sm:flex-row justify-between gap-4 text-xs text-muted-foreground">
+
+      <div className="mx-auto mt-10 flex max-w-7xl flex-col items-start justify-between gap-4 border-t border-border px-5 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center md:mt-12">
         <p>© {new Date().getFullYear()} Actverse Academy. All rights reserved.</p>
-        <div className="flex gap-4">
-          <Link href="/privacy-policy" className="hover:text-cherry transition-colors">Privacy Policy</Link>
-          <Link href="/refund-policy" className="hover:text-cherry transition-colors">Refund Policy</Link>
+        <div className="flex flex-wrap gap-4">
+          <Link href="/privacy-policy" className="transition-colors hover:text-cherry">
+            Privacy Policy
+          </Link>
+          <Link href="/refund-policy" className="transition-colors hover:text-cherry">
+            Refund Policy
+          </Link>
         </div>
       </div>
     </footer>
   );
 }
 
-export function SiteShell({ children }: { children: ReactNode }) { 
+export function SiteShell({ children }: { children: ReactNode }) {
   return (
     <div className="overflow-x-clip">
       <SiteHeader />
       <main>{children}</main>
       <SiteFooter />
     </div>
-  ); 
+  );
 }

@@ -3,7 +3,7 @@ export const EMAIL = "actverseacademy@gmail.com";
 export const WHATSAPP_URL = "https://wa.me/919004316169?text=" + encodeURIComponent("Hi Actverse! I'd like to know about your courses.");
 export const PAYMENT_METHODS = ["UPI", "Cash", "Bank Transfer"];
 export const REFUND_POLICY = "Fees once paid are non-refundable and non-transferable under any circumstances.";
-export const HOUSING_START = 20000;
+export const HOUSING_START = 15000;
 export const formatFee = (fee: number | null) => fee === null ? "On request" : `₹${fee.toLocaleString("en-IN")}`;
 export type Course = { slug: string; name: string; duration: string; fee: number | null; category: "Acting" | "Workshops" | "Dance"; blurb: string };
 export const courses: Course[] = [

@@ -40,10 +40,10 @@ export default async function AboutPage() {
 
       <main className="flex-1 overflow-x-hidden">
         {/* HERO SECTION — Philosophy */}
-        <section className="relative bg-ink py-14 text-bone sm:py-20 md:py-28 lg:py-32">
+        <section className="relative bg-ink py-12 text-bone sm:py-14 md:py-14 lg:py-14">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
             <Reveal>
-              <Label n="01" t="Our Philosophy" tone="text-champagne" />
+              {/* <Label n="01" t="Our Philosophy" tone="text-champagne" /> */}
               <h1 className="mt-4 max-w-5xl text-4xl leading-[1.08] tracking-tight sm:text-5xl md:mt-6 md:text-6xl lg:text-7xl">
                 IT’S TIME TO SHINE
                 <span className="mt-2 block font-display italic text-champagne">
@@ -95,10 +95,10 @@ export default async function AboutPage() {
         </section>
 
         {/* FOUNDER'S VISION */}
-        <section className="border-y border-bone/10 bg-cherry-deep py-14 text-bone sm:py-20 md:py-24 lg:py-28">
+        <section className="border-y border-bone/10 bg-cherry-deep py-12 text-bone sm:py-14 md:py-14 lg:py-14">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
-              <Label n="02" t="Founder's Vision" tone="text-champagne/80" />
+              {/* <Label n="02" t="Founder's Vision" tone="text-champagne/80" /> */}
               <blockquote className="mt-6 font-display text-xl font-medium leading-relaxed text-bone/95 sm:mt-8 sm:text-2xl md:text-3xl md:leading-snug lg:text-4xl lg:leading-snug">
                 &ldquo;My vision is to discover and nurture the next generation
                 of stars—training aspiring actors, creating real opportunities,
@@ -119,10 +119,10 @@ export default async function AboutPage() {
         </section>
 
         {/* FACULTY SECTION (Dynamic from DB) */}
-        <section className="bg-paper py-14 text-paper-foreground sm:py-20 md:py-24 lg:py-28">
+        <section className="bg-paper py-12 text-paper-foreground sm:py-14 md:py-14 lg:py-14">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
             <Reveal className="max-w-2xl">
-              <Label n="03" t="The Mentors" tone="text-cherry" />
+              {/* <Label n="03" t="The Mentors" tone="text-cherry" /> */}
               <h2 className="mt-3 text-3xl leading-tight sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
                 Guidance from the <em className="!text-gold-deep">industry</em>.
               </h2>
@@ -209,10 +209,10 @@ export default async function AboutPage() {
         </section>
 
         {/* LOCATION & CONTACT SECTION */}
-        <section className="bg-ink py-14 text-bone sm:py-20 md:py-24 lg:py-28">
+        <section className="bg-ink py-12 text-bone sm:py-20 md:py-24 lg:py-14">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
             <Reveal>
-              <Label n="04" t="Visit Us" tone="text-champagne" />
+              {/* <Label n="04" t="Visit Us" tone="text-champagne" /> */}
               <h2 className="mt-3 text-3xl leading-tight sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
                 Find your <em className="text-champagne">stage</em>.
               </h2>

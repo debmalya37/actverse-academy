@@ -26,7 +26,7 @@ export default async function Courses() {
         <img src={screen.src} alt="A camera and performer on a film set" className="absolute inset-0 h-full w-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-cherry/60" />
         <div className="relative mx-auto max-w-7xl px-5">
-          <p className="label-mono text-champagne">Scene 02 · Courses</p>
+          {/* <p className="label-mono text-champagne">Scene 02 · Courses</p> */}
           <h1 className="mt-5 text-4xl md:text-6xl">Actverse Academy — <br />Your Story Starts Here.</h1>
           <p className="mt-6 max-w-xl text-lg text-bone/90">Foundation programs, professional diplomas, workshops and movement training. Choose your next step.</p>
         </div>

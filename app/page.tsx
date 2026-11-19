@@ -80,7 +80,7 @@ export default async function HomePage() {
       <SiteFooter />
       
       <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" aria-label="Chat on WhatsApp"
-        className="fixed bottom-24 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-gold-cta text-primary-foreground shadow-lg transition-transform hover:scale-105 md:bottom-6">
+        className="fixed  bottom-24 right-4 z-40 hidden md:flex h-14 w-14 items-center justify-center rounded-full bg-gold-cta text-primary-foreground shadow-lg transition-transform hover:scale-105 md:bottom-6 ">
         <MessageCircle className="h-6 w-6" />
       </a>
       

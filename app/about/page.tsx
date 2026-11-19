@@ -40,7 +40,7 @@ export default async function AboutPage() {
 
       <main className="flex-1 overflow-x-hidden">
         {/* HERO SECTION — Philosophy */}
-        <section className="relative bg-ink py-12 text-bone sm:py-14 md:py-14 lg:py-14">
+        <section className="relative bg-ink py-14 text-bone sm:py-24 md:py-24 lg:py-24">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
             <Reveal>
               {/* <Label n="01" t="Our Philosophy" tone="text-champagne" /> */}
@@ -95,7 +95,7 @@ export default async function AboutPage() {
         </section>
 
         {/* FOUNDER'S VISION */}
-        <section className="border-y border-bone/10 bg-cherry-deep py-12 text-bone sm:py-14 md:py-14 lg:py-14">
+        <section className="border-y border-bone/10 bg-cherry-deep py-14 text-bone sm:py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               {/* <Label n="02" t="Founder's Vision" tone="text-champagne/80" /> */}

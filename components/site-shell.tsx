@@ -24,18 +24,17 @@ export function SiteHeader() {
         {/* Inside SiteHeader */}
 <Link
   href="/"
-  className="inline-flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-md bg-black shadow-sm opacity-100 hover:backdrop-opacity-60 sm:h-14 sm:w-14 md:h-16 md:w-16 scale-125 md:scale-150"
+  className="inline-flex h-16 w-36 shrink-0 items-center justify-center overflow-hidden transition-opacity hover:opacity-90 sm:h-18 sm:w-40 md:h-20 md:w-44"
 >
   <Image
     src="/logo.png"
     alt="Actverse Academy Logo"
-    width={160}
+    width={280}
     height={160}
-    className="h-full w-full scale-200 object-contain object-center"
+    className="h-full w-full scale-110 object-contain object-center"
     priority
   />
 </Link>
-
         <nav aria-label="Main" className="hidden items-center gap-7 text-base md:flex">
           <Link
             href="/"
@@ -155,13 +154,13 @@ export function SiteFooter() {
         <div className="sm:col-span-2 md:col-span-1">
           <Link
             href="/"
-            className="inline-flex h-20 w-48 items-center justify-center overflow-hidden rounded-lg bg-black px-3 shadow-sm transition-opacity hover:opacity-95 sm:h-24 sm:w-56 md:h-28 md:w-64"
+            className="inline-flex h-20 w-48 items-center justify-center overflow-hidden rounded-lg  px-6  transition-opacity hover:opacity-95 sm:h-24 sm:w-56 md:h-28 md:w-64"
           >
             <Image
               src="/logo.png"
               alt="Actverse Academy Logo"
-              width={260}
-              height={120}
+              width={380}
+              height={160}
               className="h-full w-full scale-125 object-contain object-center"
             />
           </Link>

@@ -130,11 +130,11 @@ function Hero() {
 
 function Tagline() {
   return (
-    <section id="tagline" aria-labelledby="tagline-h" className="scroll-mt-24 border-b border-border pt-10 pb-8 md:pt-20 md:pb-12">
+    <section id="tagline" aria-labelledby="tagline-h" className="scroll-mt-16 border-b border-border pt-10 pb-8 md:pt-10 md:pb-12">
       <div className="mx-auto max-w-7xl px-5">
-        <div className="flex items-center gap-4 "><span className="h-px w-10 bg-cherry" aria-hidden /><Label n="01" t="Time to shine"  tone="text-cherry" /></div>
+        {/* <div className="flex items-center gap-4 "><span className="h-px w-10 bg-cherry" aria-hidden /><Label n="01" t="Time to shine"  tone="text-cherry" /></div> */}
         <div className="mt-6 grid gap-7 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-12">
-          <h1 id="tagline-h" className="text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl">Today’s dreamers.<br /><em className="text-cherry">Tomorrow’s<br className="hidden xl:block" /> superstars.</em></h1>
+          <h1 id="tagline-h" className="text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl">Today’s Dreamers.<br /><em className="text-cherry">Tomorrow’s Superstars.</em></h1>
           <div>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">At Actverse Academy, we help young dreamers discover their talent, build confidence, and take their first steps towards cinema, acting, and creative expression.</p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -154,11 +154,11 @@ function Tagline() {
 
 function Emotions() {
   return (
-    <section id="emotions" aria-labelledby="emo-h" className="w-full bg-paper py-12 text-paper-foreground md:py-28"
+    <section id="emotions" aria-labelledby="emo-h" className="w-full bg-paper py-10 text-paper-foreground md:py-10"
       style={{ "--border": "oklch(0.16 0.01 50 / 15%)", "--card": "var(--paper)" } as React.CSSProperties}>
       <Reveal className="mx-auto w-full max-w-7xl px-5">
-        <Label n="03" t="The actor's palette" tone="text-love" />
-        <h2 id="emo-h" className="mt-4 w-full max-w-3xl text-4xl leading-tight sm:text-5xl md:text-6xl">Nine emotions. One <em className="!text-gold-deep">instrument</em> — you.</h2>
+        {/* <Label n="03" t="The actor's palette" tone="text-love" /> */}
+        <h2 id="emo-h" className="w-full max-w-3xl text-4xl leading-tight sm:text-5xl md:text-6xl">Nine emotions. One <em className="!text-gold-deep">instrument</em> — you.</h2>
         <p className="mt-5 w-full max-w-xl text-base text-paper-foreground/70 sm:text-lg md:text-xl">
           Explore the emotions that bring characters to life — a palette of expression, connection and individuality.
         </p>
@@ -187,10 +187,10 @@ function Stages() {
     { k: "Screen", img: screen, alt: "Actress on a film set", d: "Film, OTT and ads. Learn to think in frames, hit marks and make the camera believe you.", n: "B" },
   ];
   return (
-    <section aria-labelledby="stage-h" className="w-full py-12 md:py-28">
+    <section aria-labelledby="stage-h" className="w-full py-10 md:py-12">
       <Reveal className="mx-auto w-full max-w-7xl px-5">
-        <Label n="04" t="Choose your stage" tone="text-trust" />
-        <h2 id="stage-h" className="mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">Two crafts. One <em className="!text-cherry">spotlight</em>.</h2>
+        {/* <Label n="04" t="Choose your stage" tone="text-trust" /> */}
+        <h2 id="stage-h" className=" text-4xl leading-tight sm:text-5xl md:text-6xl">Two crafts. One <em className="!text-cherry">spotlight</em>.</h2>
       </Reveal>
       <div className="mt-8 md:mt-12 grid w-full grid-cols-1 md:grid-cols-2">
         {items.map((s) => (
@@ -203,7 +203,7 @@ function Stages() {
               <p className="mt-3 w-full max-w-md text-base text-bone/90 sm:text-lg md:text-xl">{s.d}</p>
               
               {/* Upgraded Button: Distinct shape, border, and hover state so it's instantly recognized as a button */}
-              <div className="mt-6 md:mt-8 inline-flex h-12 items-center justify-center gap-2 rounded-md border border-bone/30 bg-bone/10 px-6 font-medium text-bone backdrop-blur-sm transition-all group-hover:bg-cherry group-hover:border-cherry group-hover:text-white">
+              <div className="mt-6 md:mt-8  inline-flex h-12 items-center justify-center gap-2 rounded-md border border-bone/30 bg-bone/10 px-6 font-medium text-bone backdrop-blur-sm transition-all group-hover:bg-bone/40 group-hover:border-cherry group-hover:text-white">
                 Explore our courses <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </div>
             </div>
@@ -227,7 +227,7 @@ function WhyChooseUs() {
   ];
 
   return (
-    <section className="w-full bg-ink py-12 text-bone md:py-28">
+    <section className="w-full bg-ink py-10 text-bone md:py-12">
       <Reveal className="mx-auto w-full max-w-7xl px-5">
         <h2 className="text-3xl font-bold uppercase tracking-tight sm:text-4xl md:text-5xl">Why Choose Actverse Academy?</h2>
         <p className="mt-3 text-lg md:text-xl italic text-bone/80">More Than Acting. A Complete Performer Development Experience.</p>
@@ -250,9 +250,9 @@ function WhyChooseUs() {
 
 function CallSheet({ courses }: { courses: any[] }) {
   return (
-    <section id="courses" className="mx-auto w-full max-w-7xl px-5 py-12 md:py-28">
-      <Label n="02" t="Courses" tone="text-cherry" />
-      <h2 className="mb-6 md:mb-10 mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">Our <em className="!text-cherry">Courses</em>.</h2>
+    <section id="courses" className="mx-auto w-full max-w-7xl px-5 py-10 md:py-12">
+      {/* <Label n="02" t="Courses" tone="text-cherry" /> */}
+      <h2 className="mb-6 md:mb-6 text-4xl leading-tight sm:text-5xl md:text-6xl">Our <em className="!text-cherry">Courses</em>.</h2>
       <CourseList courses={courses} />
     </section>
   );
@@ -267,11 +267,11 @@ function Method() {
     ["Spotlight", "Confidence", "Prepare for auditions and develop the courage to take your next step.", "var(--joy-bright)"],
   ] as const;
   return (
-    <section aria-labelledby="method-h" className="w-full bg-ink py-12 text-bone md:py-28">
+    <section aria-labelledby="method-h" className="w-full bg-ink py-10 text-bone md:py-12">
       <div className="mx-auto w-full max-w-7xl px-5">
         <Reveal>
-          <Label n="05" t="The Method" tone="text-surprise-bright" />
-          <h2 id="method-h" className="mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">From read-through to <em>premiere</em>.</h2>
+          {/* <Label n="05" t="The Method" tone="text-surprise-bright" /> */}
+          <h2 id="method-h" className=" text-4xl leading-tight sm:text-5xl md:text-6xl">From read-through to <em>premiere</em>.</h2>
         </Reveal>
         <ol className="relative mt-10 md:mt-14 grid w-full gap-8 md:grid-cols-4 md:gap-6">
           <div className="absolute left-0 right-0 top-[7px] hidden h-px w-full bg-gold-cta/40 md:block" aria-hidden />
@@ -293,9 +293,9 @@ function Method() {
 
 function Faculty({ team }: { team: any[] }) {
   return (
-    <section id="faculty" className="mx-auto w-full max-w-7xl px-5 py-12 md:py-28">
-      <Label n="06" t="Founders & faculty" tone="text-fear" />
-      <h2 className="mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">People who nurture <em className="!text-cherry">talent</em>.</h2>
+    <section id="faculty" className="mx-auto w-full max-w-7xl px-5 py-10 md:py-12">
+      {/* <Label n="06" t="Founders & faculty" tone="text-fear" /> */}
+      <h2 className=" text-4xl leading-tight sm:text-5xl md:text-6xl">People who nurture <em className="!text-cherry">talent</em>.</h2>
       
       <div className="mt-8 md:mt-12 grid w-full grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {team.map(p => (
@@ -332,10 +332,10 @@ function Faculty({ team }: { team: any[] }) {
 
 function DemoForm() {
   return (
-    <section id="demo" className="w-full bg-card py-12 md:py-28">
+    <section id="demo" className="w-full bg-card py-10 md:py-12">
       <div className="mx-auto w-full max-w-7xl px-5">
-        <Label n="10" t="Admissions" tone="text-anger" />
-        <h2 className="mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">Let’s talk about your <em className="text-cherry">dream</em>.</h2>
+        {/* <Label n="10" t="Admissions" tone="text-anger" /> */}
+        <h2 className="text-4xl leading-tight sm:text-5xl md:text-6xl">Let’s talk about your <em className="text-cherry">dream</em>.</h2>
         <p className="mt-4 md:mt-5 w-full max-w-xl text-base text-muted-foreground sm:text-lg md:text-xl">Ask our admissions team about courses, schedules and special offers.</p>
         <div className="mt-6 md:mt-8 flex w-full flex-col gap-3 sm:flex-row">
           <Button asChild className="h-12 w-full md:text-lg bg-cta text-primary-foreground hover:bg-cherry sm:w-auto">
@@ -355,10 +355,10 @@ function FAQ({ faqs }: { faqs: any[] }) {
   if (!faqs || faqs.length === 0) return null;
 
   return (
-    <section id="faq" aria-labelledby="faq-h" className="w-full bg-paper py-12 text-paper-foreground md:py-28">
+    <section id="faq" aria-labelledby="faq-h" className="w-full bg-paper py-10 text-paper-foreground md:py-12">
       <div className="mx-auto w-full max-w-4xl px-5">
         <Reveal>
-          <Label n="12" t="Fees & FAQ" tone="text-sadness" />
+          {/* <Label n="12" t="Fees & FAQ" tone="text-sadness" /> */}
           <h2 id="faq-h" className="mt-4 text-4xl leading-tight sm:text-5xl md:text-6xl">Questions from the <em className="!text-gold-deep">wings</em>.</h2>
         </Reveal>
         <Accordion type="single" collapsible className="mt-8 md:mt-10 w-full">
@@ -376,10 +376,10 @@ function FAQ({ faqs }: { faqs: any[] }) {
  
 function FinalCTA() {
   return (
-    <section className="relative w-full overflow-hidden bg-ink py-16 text-center text-bone md:py-40">
+    <section className="relative w-full overflow-hidden bg-ink py-16 text-center text-bone md:py-32">
       <div className="filmstrip absolute inset-x-0 top-0 w-full" aria-hidden />
       <Reveal className="mx-auto w-full max-w-4xl px-5">
-        <p className="label-mono text-gold">Final scene</p>
+        {/* <p className="label-mono text-gold">Final scene</p> */}
         <h2 className="mt-4 md:mt-6 text-5xl leading-[0.95] sm:text-7xl md:text-8xl">Lights. Camera. <em>Enrol.</em></h2>
         <div className="mt-8 md:mt-10 flex w-full flex-col justify-center gap-3 sm:flex-row">
           <a href="#demo" className="btn-gold flex w-full items-center justify-center text-center sm:w-auto md:text-lg">Enquire with Admissions</a>

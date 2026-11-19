@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useState, type ReactNode } from "react";
 import { Menu, X, ArrowUpRight, Phone, Mail, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { EMAIL, PHONE, WHATSAPP_URL } from "@/lib/site-data";
+import { EMAIL, PHONE } from "@/lib/site-data";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -19,20 +19,22 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 md:py-3.5">
-        <Link
-          href="/"
-          className="inline-flex shrink-0 items-center rounded-md bg-black px-2.5 py-1.5 shadow-sm transition-opacity hover:opacity-90 sm:px-3"
-        >
-          <Image
-            src="/logo.png"
-            alt="Actverse Academy Logo"
-            width={180}
-            height={100}
-            className="h-10 w-auto bg-black sm:h-12 md:h-14"
-            priority
-          />
-        </Link>
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-5 md:py-5">
+        {/* Bigger black frame + overflow-hidden with scale crops out excess side padding */}
+        {/* Inside SiteHeader */}
+<Link
+  href="/"
+  className="inline-flex h-16 w-16 shrink-0 items-center justify-center overflow-hidden rounded-md bg-black shadow-sm opacity-100 hover:backdrop-opacity-60 sm:h-14 sm:w-14 md:h-16 md:w-16 scale-125 md:scale-150"
+>
+  <Image
+    src="/logo.png"
+    alt="Actverse Academy Logo"
+    width={160}
+    height={160}
+    className="h-full w-full scale-200 object-contain object-center"
+    priority
+  />
+</Link>
 
         <nav aria-label="Main" className="hidden items-center gap-7 text-base md:flex">
           <Link
@@ -82,9 +84,9 @@ export function SiteHeader() {
             asChild
             className="h-9 bg-cta px-3 text-sm text-primary-foreground hover:bg-cherry sm:h-10 sm:px-4 sm:text-base"
           >
-            <a href="/contact" target="_blank" rel="noreferrer">
+            <Link href="/contact">
               Enquire <ArrowUpRight className="ml-1 h-4 w-4" />
-            </a>
+            </Link>
           </Button>
           <Button
             variant="ghost"
@@ -114,6 +116,15 @@ export function SiteHeader() {
             Home
           </Link>
           <Link
+            href="/courses"
+            onClick={() => setOpen(false)}
+            className={`rounded-md py-2.5 text-base ${
+              isActive("/courses") ? "font-semibold text-cherry" : "hover:text-cherry"
+            }`}
+          >
+            Courses
+          </Link>
+          <Link
             href="/about"
             onClick={() => setOpen(false)}
             className={`rounded-md py-2.5 text-base ${
@@ -123,13 +134,13 @@ export function SiteHeader() {
             About Us
           </Link>
           <Link
-            href="/courses"
+            href="/contact"
             onClick={() => setOpen(false)}
             className={`rounded-md py-2.5 text-base ${
-              isActive("/courses") ? "font-semibold text-cherry" : "hover:text-cherry"
+              isActive("/contact") ? "font-semibold text-cherry" : "hover:text-cherry"
             }`}
           >
-            Courses
+            Contact Us
           </Link>
         </nav>
       )}
@@ -144,14 +155,14 @@ export function SiteFooter() {
         <div className="sm:col-span-2 md:col-span-1">
           <Link
             href="/"
-            className="inline-flex items-center rounded-lg bg-black px-4 py-2.5 shadow-sm transition-opacity hover:opacity-90"
+            className="inline-flex h-20 w-48 items-center justify-center overflow-hidden rounded-lg bg-black px-3 shadow-sm transition-opacity hover:opacity-95 sm:h-24 sm:w-56 md:h-28 md:w-64"
           >
             <Image
               src="/logo.png"
               alt="Actverse Academy Logo"
-              width={200}
-              height={67}
-              className="h-16 w-auto sm:h-20 md:h-24"
+              width={260}
+              height={120}
+              className="h-full w-full scale-125 object-contain object-center"
             />
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground sm:text-base">
@@ -171,6 +182,9 @@ export function SiteFooter() {
           </Link>
           <Link href="/courses" className="w-fit transition-colors hover:text-cherry">
             Courses & Fees
+          </Link>
+          <Link href="/contact" className="w-fit transition-colors hover:text-cherry">
+            Contact Us
           </Link>
         </nav>
 
@@ -205,14 +219,7 @@ export function SiteFooter() {
 
       <div className="mx-auto mt-10 flex max-w-7xl flex-col items-start justify-between gap-4 border-t border-border px-5 pt-6 text-xs text-muted-foreground sm:flex-row sm:items-center md:mt-12">
         <p>© {new Date().getFullYear()} Actverse Academy. All rights reserved.</p>
-        <div className="flex flex-wrap gap-4">
-          <Link href="/privacy-policy" className="transition-colors hover:text-cherry">
-            Privacy Policy
-          </Link>
-          <Link href="/refund-policy" className="transition-colors hover:text-cherry">
-            Refund Policy
-          </Link>
-        </div>
+        
       </div>
     </footer>
   );

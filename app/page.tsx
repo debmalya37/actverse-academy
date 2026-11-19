@@ -134,7 +134,7 @@ function Tagline() {
       <div className="mx-auto max-w-7xl px-5">
         {/* <div className="flex items-center gap-4 "><span className="h-px w-10 bg-cherry" aria-hidden /><Label n="01" t="Time to shine"  tone="text-cherry" /></div> */}
         <div className="mt-6 grid gap-7 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-12">
-          <h1 id="tagline-h" className="text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl">Today’s Dreamers.<br /><em className="text-cherry">Tomorrow’s Superstars.</em></h1>
+          <h1 id="tagline-h" className="text-2xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl">Today’s Dreamers.<br /><em className="text-cherry">Tomorrow’s Superstars.</em></h1>
           <div>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">At Actverse Academy, we help young dreamers discover their talent, build confidence, and take their first steps towards cinema, acting, and creative expression.</p>
             <div className="mt-6 flex flex-wrap gap-3">

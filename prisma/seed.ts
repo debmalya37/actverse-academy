@@ -4,7 +4,10 @@ import { Pool } from "pg";
 import bcrypt from "bcryptjs";
 import "dotenv/config";
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  max: 1,
+});
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
@@ -42,10 +45,10 @@ async function main() {
       role: "Awardee Director, Producer & Founder — Kiida Films and Actverse Academy",
       bio: "Koushish Varade is a director, producer, and founder of Kiida Films and Actverse Academy. His work spans feature films, web series, vertical dramas, music videos, advertisements, promotional films, and documentaries. His project credits include Yeh Saali Aashiqui, Murder in Mahim, and Illegal Season 2. His documentary Tri-Services – All-Women Circumnavigation Sailing Expedition received an Honorable Jury Mention at the 16th Dada Saheb Phalke Film Festival 2026, alongside multiple official selections. His advertisements and promotional videos have also received notable recognition. Through Actverse Academy, he is committed to nurturing emerging talent and preparing aspiring performers for the entertainment industry.",
       order: 1,
-      image: "/faculty/Koushish.png", 
-      instagramUrl: "https://instagram.com/",
-      facebookUrl: "https://facebook.com/",
-      linkedinUrl: "https://linkedin.com/"
+      image: "/faculty/Koushish.png",
+      // instagramUrl: "https://www.instagram.com/actverseacademy?rpxt=aGZlcWZ1MXhmNGU5 ",
+      // facebookUrl: "https://www.facebook.com/profile.php?id=61594155764002 ",
+      // linkedinUrl: "https://www.linkedin.com/company/actverse-academy/ ",
     },
     {
       name: "Krishnkant Agarwal",
@@ -108,10 +111,10 @@ async function main() {
   await prisma.faculty.createMany({ data: facultyData });
 
   // ---------------------------------------------------------------------------
-  // 3. SEED COURSES & SYLLABUS MODULES IN EXACT DOCUMENT ORDER
+  // 3. SEED COURSES & SYLLABUS MODULES (WEEKEND WORKSHOP FIRST)
   // ---------------------------------------------------------------------------
   console.log("Clearing & seeding courses and curriculum...");
-  
+
   await prisma.syllabusModule.deleteMany();
   await prisma.course.deleteMany();
 
@@ -125,24 +128,107 @@ async function main() {
     description: string;
     seoTitle: string;
     seoDescription: string;
-    syllabus: Array<{ title: string; description: string; practicalActivities: string; order: number }>;
+    syllabus: Array<{
+      title: string;
+      description: string;
+      practicalActivities: string;
+      order: number;
+    }>;
   }> = [
+    {
+      slug: "weekend-acting-workshop",
+      name: "Weekend Acting WorkShop",
+      category: CourseCategory.WORKSHOPS,
+      duration: "1 Month",
+      fee: 30000,
+      blurb:
+        "Acting Basics | Camera Acting | Voice & Diction | Expressions | Improvisation | Dance & Movement | Audition Techniques",
+      description:
+        "Perfect for working professionals and students looking to explore acting over weekends.",
+      seoTitle: "Weekend Acting Workshop — Actverse Academy",
+      seoDescription:
+        "Join our weekend acting workshop in Mumbai for students and working professionals.",
+      syllabus: [
+        {
+          title: "1st Week – Acting Fundamentals",
+          description:
+            "Introduction to acting, confidence building, facial expressions, body language and basic acting exercises.",
+          practicalActivities:
+            "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions",
+          order: 1,
+        },
+        {
+          title: "2nd Week – Voice & Expressions",
+          description:
+            "Voice modulation, diction, dialogue delivery, emotional expressions and personality development.",
+          practicalActivities:
+            "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions",
+          order: 2,
+        },
+        {
+          title: "3rd Week – Performance & Camera Acting",
+          description:
+            "Improvisation, character building, scene performance, camera confidence and basic dance movements.",
+          practicalActivities:
+            "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions",
+          order: 3,
+        },
+        {
+          title: "4th Week – Audition & Final Performance",
+          description:
+            "Monologue practice, audition techniques, self-tape basics, camera performance and final performance showcase.",
+          practicalActivities:
+            "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions",
+          order: 4,
+        },
+      ],
+    },
     {
       slug: "one-month-foundation",
       name: "One-Month Foundation Program",
       category: CourseCategory.ACTING,
       duration: "1 Month Course",
       fee: 50000,
-      blurb: "Acting Basics, Facial Expressions, Voice Modulation, Body Language, Dialogue Delivery, Improvisation & Basic Camera Acting.",
+      blurb:
+        "Acting Basics, Facial Expressions, Voice Modulation, Body Language, Dialogue Delivery, Improvisation & Basic Camera Acting.",
       description: "Discover Your Acting Potential",
       seoTitle: "One-Month Acting Foundation Program — Actverse Academy",
-      seoDescription: "Join the 1-month acting foundation program at Actverse Academy. Learn voice, body language, and basic camera acting.",
+      seoDescription:
+        "Join the 1-month acting foundation program at Actverse Academy. Learn voice, body language, and basic camera acting.",
       syllabus: [
-        { title: "Week 1 – Break the Hesitation", description: "Confidence building, introduction to acting, expressions and acting games.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 1 },
-        { title: "Week 2 – Find Your Voice", description: "Voice modulation, diction, dialogue delivery and body language.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 2 },
-        { title: "Week 3 – Get Camera Ready", description: "Camera basics, improvisation, roleplay and short scenes.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 3 },
-        { title: "Week 4 – Your First Performance", description: "Monologues, audition practice and recorded camera performance.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 4 }
-      ]
+        {
+          title: "Week 1 – Break the Hesitation",
+          description:
+            "Confidence building, introduction to acting, expressions and acting games.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 1,
+        },
+        {
+          title: "Week 2 – Find Your Voice",
+          description:
+            "Voice modulation, diction, dialogue delivery and body language.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 2,
+        },
+        {
+          title: "Week 3 – Get Camera Ready",
+          description:
+            "Camera basics, improvisation, roleplay and short scenes.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 3,
+        },
+        {
+          title: "Week 4 – Your First Performance",
+          description:
+            "Monologues, audition practice and recorded camera performance.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 4,
+        },
+      ],
     },
     {
       slug: "online-one-month-foundation",
@@ -150,16 +236,46 @@ async function main() {
       category: CourseCategory.ACTING,
       duration: "1 Month Course",
       fee: 30000,
-      blurb: "Acting Basics, Facial Expressions, Voice Modulation, Body Language, Dialogue Delivery, Improvisation & Basic Camera Acting.",
+      blurb:
+        "Acting Basics, Facial Expressions, Voice Modulation, Body Language, Dialogue Delivery, Improvisation & Basic Camera Acting.",
       description: "Discover Your Acting Potential",
       seoTitle: "Online Acting Foundation Program — Actverse Academy",
-      seoDescription: "Take our 1-month online acting foundation course from anywhere in the world with Actverse Academy.",
+      seoDescription:
+        "Take our 1-month online acting foundation course from anywhere in the world with Actverse Academy.",
       syllabus: [
-        { title: "Week 1 – Break the Hesitation", description: "Confidence building, introduction to acting, expressions and acting games.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 1 },
-        { title: "Week 2 – Find Your Voice", description: "Voice modulation, diction, dialogue delivery and body language.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 2 },
-        { title: "Week 3 – Get Camera Ready", description: "Camera basics, improvisation, roleplay and short scenes.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 3 },
-        { title: "Week 4 – Your First Performance", description: "Monologues, audition practice and recorded camera performance.", practicalActivities: "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.", order: 4 }
-      ]
+        {
+          title: "Week 1 – Break the Hesitation",
+          description:
+            "Confidence building, introduction to acting, expressions and acting games.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 1,
+        },
+        {
+          title: "Week 2 – Find Your Voice",
+          description:
+            "Voice modulation, diction, dialogue delivery and body language.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 2,
+        },
+        {
+          title: "Week 3 – Get Camera Ready",
+          description:
+            "Camera basics, improvisation, roleplay and short scenes.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 3,
+        },
+        {
+          title: "Week 4 – Your First Performance",
+          description:
+            "Monologues, audition practice and recorded camera performance.",
+          practicalActivities:
+            "Icebreakers, acting games, roleplay, dialogue exercises and performance recording.",
+          order: 4,
+        },
+      ],
     },
     {
       slug: "foundation-certificate-in-acting",
@@ -167,15 +283,38 @@ async function main() {
       category: CourseCategory.ACTING,
       duration: "3 Months Course",
       fee: 120000,
-      blurb: "Acting Techniques, Character Building, Emotional Expressions, Script Reading, Diction, Scene Performance, Dance & Camera Acting.",
+      blurb:
+        "Acting Techniques, Character Building, Emotional Expressions, Script Reading, Diction, Scene Performance, Dance & Camera Acting.",
       description: "From Beginner to Confident Performer",
       seoTitle: "3-Month Foundation Certificate in Acting — Actverse Academy",
-      seoDescription: "Build a solid acting foundation over 3 months at Actverse Academy with scene work, dance, and camera training.",
+      seoDescription:
+        "Build a solid acting foundation over 3 months at Actverse Academy with scene work, dance, and camera training.",
       syllabus: [
-        { title: "Month 1 – BUILD", description: "Acting fundamentals, voice, expressions, movement and confidence.", practicalActivities: "Partner scenes, group performances, mock auditions, camera exercises and feedback sessions.", order: 1 },
-        { title: "Month 2 – EXPLORE", description: "Character building, emotions, script reading, improvisation and scene performance.", practicalActivities: "Partner scenes, group performances, mock auditions, camera exercises and feedback sessions.", order: 2 },
-        { title: "Month 3 – PERFORM", description: "Camera acting, audition techniques, monologues and self-tape preparation.", practicalActivities: "Partner scenes, group performances, mock auditions, camera exercises and feedback sessions.", order: 3 }
-      ]
+        {
+          title: "Month 1 – BUILD",
+          description:
+            "Acting fundamentals, voice, expressions, movement and confidence.",
+          practicalActivities:
+            "Partner scenes, group performances, mock auditions, camera exercises and feedback sessions.",
+          order: 1,
+        },
+        {
+          title: "Month 2 – EXPLORE",
+          description:
+            "Character building, emotions, script reading, improvisation and scene performance.",
+          practicalActivities:
+            "Partner scenes, group performances, mock auditions, camera exercises and feedback sessions.",
+          order: 2,
+        },
+        {
+          title: "Month 3 – PERFORM",
+          description:
+            "Camera acting, audition techniques, monologues and self-tape preparation.",
+          practicalActivities:
+            "Partner scenes, group performances, mock auditions, camera exercises and feedback sessions.",
+          order: 3,
+        },
+      ],
     },
     {
       slug: "professional-diploma-in-acting",
@@ -183,18 +322,61 @@ async function main() {
       category: CourseCategory.ACTING,
       duration: "6 Month Course",
       fee: 200000,
-      blurb: "Method Acting, Character Development, Emotional Depth, Script Analysis, Voice & Movement, Scene Study, Dance, Screen Acting & Audition Techniques.",
+      blurb:
+        "Method Acting, Character Development, Emotional Depth, Script Analysis, Voice & Movement, Scene Study, Dance, Screen Acting & Audition Techniques.",
       description: "Develop Your Craft. Own the Camera.",
       seoTitle: "6-Month Professional Diploma in Acting — Actverse Academy",
-      seoDescription: "Earn your Professional Diploma in Acting at Actverse Academy in Mumbai. Master method acting and screen performance.",
+      seoDescription:
+        "Earn your Professional Diploma in Acting at Actverse Academy in Mumbai. Master method acting and screen performance.",
       syllabus: [
-        { title: "Month 1: Acting Foundations", description: "Acting foundations, voice, diction and body language.", practicalActivities: "Scene recreations, audition simulations, performance recordings and individual feedback.", order: 1 },
-        { title: "Month 2: Character & Emotion", description: "Emotional expressions, improvisation and character development.", practicalActivities: "Scene recreations, audition simulations, performance recordings and individual feedback.", order: 2 },
-        { title: "Month 3: Script & Scene Study", description: "Script analysis, scene study and dialogue delivery.", practicalActivities: "Scene recreations, audition simulations, performance recordings and individual feedback.", order: 3 },
-        { title: "Month 4: Theatre Techniques", description: "Theatre techniques, monologues and performance skills.", practicalActivities: "Scene recreations, audition simulations, performance recordings and individual feedback.", order: 4 },
-        { title: "Month 5: Screen Acting", description: "Screen acting, audition techniques and self-tape preparation.", practicalActivities: "Scene recreations, audition simulations, performance recordings and individual feedback.", order: 5 },
-        { title: "Month 6: Final Showcase", description: "Film scenes, practical camera performances and final showcase.", practicalActivities: "Scene recreations, audition simulations, performance recordings and individual feedback.", order: 6 }
-      ]
+        {
+          title: "Month 1: Acting Foundations",
+          description: "Acting foundations, voice, diction and body language.",
+          practicalActivities:
+            "Scene recreations, audition simulations, performance recordings and individual feedback.",
+          order: 1,
+        },
+        {
+          title: "Month 2: Character & Emotion",
+          description:
+            "Emotional expressions, improvisation and character development.",
+          practicalActivities:
+            "Scene recreations, audition simulations, performance recordings and individual feedback.",
+          order: 2,
+        },
+        {
+          title: "Month 3: Script & Scene Study",
+          description:
+            "Script analysis, scene study and dialogue delivery.",
+          practicalActivities:
+            "Scene recreations, audition simulations, performance recordings and individual feedback.",
+          order: 3,
+        },
+        {
+          title: "Month 4: Theatre Techniques",
+          description:
+            "Theatre techniques, monologues and performance skills.",
+          practicalActivities:
+            "Scene recreations, audition simulations, performance recordings and individual feedback.",
+          order: 4,
+        },
+        {
+          title: "Month 5: Screen Acting",
+          description:
+            "Screen acting, audition techniques and self-tape preparation.",
+          practicalActivities:
+            "Scene recreations, audition simulations, performance recordings and individual feedback.",
+          order: 5,
+        },
+        {
+          title: "Month 6: Final Showcase",
+          description:
+            "Film scenes, practical camera performances and final showcase.",
+          practicalActivities:
+            "Scene recreations, audition simulations, performance recordings and individual feedback.",
+          order: 6,
+        },
+      ],
     },
     {
       slug: "advance-diploma-in-screen-acting",
@@ -202,33 +384,46 @@ async function main() {
       category: CourseCategory.ACTING,
       duration: "1 Year Course",
       fee: 500000,
-      blurb: "Advanced Acting, Character Psychology, Emotional Memory, Method Acting, Script Interpretation, Theatre, Dance, Camera Techniques & Audition Preparation.",
+      blurb:
+        "Advanced Acting, Character Psychology, Emotional Memory, Method Acting, Script Interpretation, Theatre, Dance, Camera Techniques & Audition Preparation.",
       description: "Transform Your Passion into Performance Skills",
       seoTitle: "1-Year Advance Diploma in Screen Acting — Actverse Academy",
-      seoDescription: "Master screen acting with our 1-year advanced diploma at Actverse Academy, featuring short-film projects and industry masterclasses.",
+      seoDescription:
+        "Master screen acting with our 1-year advanced diploma at Actverse Academy, featuring short-film projects and industry masterclasses.",
       syllabus: [
-        { title: "Quarter 1 – DISCOVER", description: "Acting fundamentals, confidence, voice, movement and improvisation.", practicalActivities: "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.", order: 1 },
-        { title: "Quarter 2 – DEVELOP", description: "Character study, emotional depth, script analysis and scene work.", practicalActivities: "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.", order: 2 },
-        { title: "Quarter 3 – MASTER", description: "Camera acting, audition preparation, self-tapes and screen presence.", practicalActivities: "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.", order: 3 },
-        { title: "Quarter 4 – EXPERIENCE", description: "Short-film projects, practical shoots, advanced scenes and final showcase.", practicalActivities: "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.", order: 4 }
-      ]
-    },
-    {
-      slug: "weekend-acting-workshop",
-      name: "Weekend Acting WorkShop",
-      category: CourseCategory.WORKSHOPS,
-      duration: "1 Month",
-      fee: 30000,
-      blurb: "Acting Basics | Camera Acting | Voice & Diction | Expressions | Improvisation | Dance & Movement | Audition Techniques",
-      description: "Perfect for working professionals and students looking to explore acting over weekends.",
-      seoTitle: "Weekend Acting Workshop — Actverse Academy",
-      seoDescription: "Join our weekend acting workshop in Mumbai for students and working professionals.",
-      syllabus: [
-        { title: "1st Week – Acting Fundamentals", description: "Introduction to acting, confidence building, facial expressions, body language and basic acting exercises.", practicalActivities: "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions", order: 1 },
-        { title: "2nd Week – Voice & Expressions", description: "Voice modulation, diction, dialogue delivery, emotional expressions and personality development.", practicalActivities: "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions", order: 2 },
-        { title: "3rd Week – Performance & Camera Acting", description: "Improvisation, character building, scene performance, camera confidence and basic dance movements.", practicalActivities: "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions", order: 3 },
-        { title: "4th Week – Audition & Final Performance", description: "Monologue practice, audition techniques, self-tape basics, camera performance and final performance showcase.", practicalActivities: "Acting Games | Roleplay | Group Scenes | Dance Exercises | Camera Practice | Mock Auditions", order: 4 }
-      ]
+        {
+          title: "Quarter 1 – DISCOVER",
+          description:
+            "Acting fundamentals, confidence, voice, movement and improvisation.",
+          practicalActivities:
+            "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.",
+          order: 1,
+        },
+        {
+          title: "Quarter 2 – DEVELOP",
+          description:
+            "Character study, emotional depth, script analysis and scene work.",
+          practicalActivities:
+            "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.",
+          order: 2,
+        },
+        {
+          title: "Quarter 3 – MASTER",
+          description:
+            "Camera acting, audition preparation, self-tapes and screen presence.",
+          practicalActivities:
+            "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.",
+          order: 3,
+        },
+        {
+          title: "Quarter 4 – EXPERIENCE",
+          description:
+            "Short-film projects, practical shoots, advanced scenes and final showcase.",
+          practicalActivities:
+            "Guest sessions, industry interactions, camera assignments, production-based learning and performance assessments.",
+          order: 4,
+        },
+      ],
     },
     {
       slug: "one-to-one-acting-classes",
@@ -236,16 +431,47 @@ async function main() {
       category: CourseCategory.WORKSHOPS,
       duration: "On Request",
       fee: 120000,
-      blurb: "Personal Attention. Individual Growth. Better Performance. A specially designed training programme with only 2 students per batch.",
-      description: "4-Week Learning Programme ensuring personalised attention, individual guidance and focused skill development.",
+      blurb:
+        "Personal Attention. Individual Growth. Better Performance. A specially designed training programme with only 2 students per batch.",
+      description:
+        "4-Week Learning Programme ensuring personalised attention, individual guidance and focused skill development.",
       seoTitle: "One-to-One Acting Classes — Actverse Academy",
-      seoDescription: "Book personalized 1-on-1 acting coaching and audition preparation at Actverse Academy.",
+      seoDescription:
+        "Book personalized 1-on-1 acting coaching and audition preparation at Actverse Academy.",
       syllabus: [
-        { title: "1st Week – Understanding Your Potential", description: "Acting fundamentals, confidence building, expressions, body language and individual skill assessment.", practicalActivities: "Acting Techniques, Facial Expressions & Body Language.", order: 1 },
-        { title: "2nd Week – Voice & Emotional Training", description: "Voice modulation, diction, dialogue delivery, emotional expressions and personality development.", practicalActivities: "Voice Modulation, Emotional Expressions & Character Building.", order: 2 },
-        { title: "3rd Week – Performance & Camera Skills", description: "Character building, improvisation, scene performance, camera acting and dance movements.", practicalActivities: "Camera Acting, Screen Presence, Improvisation & Dance Training.", order: 3 },
-        { title: "4th Week – Audition & Personal Development", description: "Monologue practice, audition techniques, self-tape preparation, camera performance and individual feedback.", practicalActivities: "Audition Techniques, Self-Tape Preparation & Confidence Building.", order: 4 }
-      ]
+        {
+          title: "1st Week – Understanding Your Potential",
+          description:
+            "Acting fundamentals, confidence building, expressions, body language and individual skill assessment.",
+          practicalActivities:
+            "Acting Techniques, Facial Expressions & Body Language.",
+          order: 1,
+        },
+        {
+          title: "2nd Week – Voice & Emotional Training",
+          description:
+            "Voice modulation, diction, dialogue delivery, emotional expressions and personality development.",
+          practicalActivities:
+            "Voice Modulation, Emotional Expressions & Character Building.",
+          order: 2,
+        },
+        {
+          title: "3rd Week – Performance & Camera Skills",
+          description:
+            "Character building, improvisation, scene performance, camera acting and dance movements.",
+          practicalActivities:
+            "Camera Acting, Screen Presence, Improvisation & Dance Training.",
+          order: 3,
+        },
+        {
+          title: "4th Week – Audition & Personal Development",
+          description:
+            "Monologue practice, audition techniques, self-tape preparation, camera performance and individual feedback.",
+          practicalActivities:
+            "Audition Techniques, Self-Tape Preparation & Confidence Building.",
+          order: 4,
+        },
+      ],
     },
     {
       slug: "corporate-workshop",
@@ -254,15 +480,45 @@ async function main() {
       duration: "On Request",
       fee: null,
       blurb: "From Classroom to Corporate – Get Ready for the Professional World!",
-      description: "A practical, skill-based programme designed to prepare students for corporate careers. Develop professional confidence, communication, technical and digital skills, interview techniques and workplace management abilities.",
+      description:
+        "A practical, skill-based programme designed to prepare students for corporate careers. Develop professional confidence, communication, technical and digital skills, interview techniques and workplace management abilities.",
       seoTitle: "Corporate Training & Workshops — Actverse Academy",
-      seoDescription: "Enhance team communication, personality development, and public speaking with Actverse Academy's corporate workshops.",
+      seoDescription:
+        "Enhance team communication, personality development, and public speaking with Actverse Academy's corporate workshops.",
       syllabus: [
-        { title: "1. Personality Development & Communication", description: "Confidence, Grooming & Personal Branding. Body Language, Public Speaking & Presentation.", practicalActivities: "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments", order: 1 },
-        { title: "2. Interview Preparation & Technical Skills", description: "HR Interviews, Mock Interviews & Resume Building. Computer Basics, MS Office & Workplace Tools.", practicalActivities: "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments", order: 2 },
-        { title: "3. Digital Skills & Corporate Etiquette", description: "Personal Branding & Online Presence. Professional Behaviour, Teamwork & Leadership.", practicalActivities: "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments", order: 3 },
-        { title: "4. Workplace Management & Career Development", description: "Time Management, Target Setting & Problem Solving. Goal Setting, Stress Management & Career Planning.", practicalActivities: "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments", order: 4 }
-      ]
+        {
+          title: "1. Personality Development & Communication",
+          description:
+            "Confidence, Grooming & Personal Branding. Body Language, Public Speaking & Presentation.",
+          practicalActivities:
+            "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments",
+          order: 1,
+        },
+        {
+          title: "2. Interview Preparation & Technical Skills",
+          description:
+            "HR Interviews, Mock Interviews & Resume Building. Computer Basics, MS Office & Workplace Tools.",
+          practicalActivities:
+            "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments",
+          order: 2,
+        },
+        {
+          title: "3. Digital Skills & Corporate Etiquette",
+          description:
+            "Personal Branding & Online Presence. Professional Behaviour, Teamwork & Leadership.",
+          practicalActivities:
+            "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments",
+          order: 3,
+        },
+        {
+          title: "4. Workplace Management & Career Development",
+          description:
+            "Time Management, Target Setting & Problem Solving. Goal Setting, Stress Management & Career Planning.",
+          practicalActivities:
+            "Mock Interviews | Group Discussions | Presentations | Resume Workshop | Roleplay | Digital Assignments",
+          order: 4,
+        },
+      ],
     },
     {
       slug: "dance-training-special",
@@ -270,14 +526,24 @@ async function main() {
       category: CourseCategory.DANCE,
       duration: "1 Month Course",
       fee: 20000,
-      blurb: "Contemporary, Hip-hop, Western, Bollywood, Kathak, Jazz, Semiclassical, Aerobics, Yoga, Garba.",
-      description: "Acting + Dance Training. Enhance your acting skills with dance and movement training. Develop rhythm, coordination, body language and expressions to become a more confident and versatile performer.",
+      blurb:
+        "Contemporary, Hip-hop, Western, Bollywood, Kathak, Jazz, Semiclassical, Aerobics, Yoga, Garba.",
+      description:
+        "Acting + Dance Training. Enhance your acting skills with dance and movement training. Develop rhythm, coordination, body language and expressions to become a more confident and versatile performer.",
       seoTitle: "Dance & Movement Training for Actors — Actverse Academy",
-      seoDescription: "Learn Hip-Hop, Contemporary, Bollywood and classical dance training specially tailored for actors at Actverse Academy.",
+      seoDescription:
+        "Learn Hip-Hop, Contemporary, Bollywood and classical dance training specially tailored for actors at Actverse Academy.",
       syllabus: [
-        { title: "Rhythm, Expression & Movement", description: "Enhance your acting skills with professional dance and movement training. Develop rhythm, coordination, and expression for on-screen performance.", practicalActivities: "Dance routines, rhythm drills, body language exercises.", order: 1 }
-      ]
-    }
+        {
+          title: "Rhythm, Expression & Movement",
+          description:
+            "Enhance your acting skills with professional dance and movement training. Develop rhythm, coordination, and expression for on-screen performance.",
+          practicalActivities:
+            "Dance routines, rhythm drills, body language exercises.",
+          order: 1,
+        },
+      ],
+    },
   ];
 
   for (const c of coursesData) {
@@ -287,20 +553,22 @@ async function main() {
         ...courseInfo,
         isActive: true,
         syllabusModules: {
-          create: syllabus
-        }
-      }
+          create: syllabus,
+        },
+      },
     });
   }
 
-  console.log(`Successfully seeded ${coursesData.length} courses in exact document order with their respective curriculum modules!`);
+  console.log(
+    `Successfully seeded ${coursesData.length} courses with Weekend Acting WorkShop first!`
+  );
   console.log("Full database seeding completed successfully!");
 }
 
 main()
   .catch((e) => {
     console.error("Error during seeding:", e);
-    process.exit(1);
+    process.exitCode = 1;
   })
   .finally(async () => {
     await prisma.$disconnect();

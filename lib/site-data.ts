@@ -1,5 +1,5 @@
 export const PHONE = "9004316169";
-export const EMAIL = "actverseacademy@gmail.com";
+export const EMAIL = "info.actverse@gmail.com";
 export const WHATSAPP_URL = "https://wa.me/919004316169?text=" + encodeURIComponent("Hi Actverse! I'd like to know about your courses.");
 export const PAYMENT_METHODS = ["UPI", "Cash", "Bank Transfer"];
 export const REFUND_POLICY = "Fees once paid are non-refundable and non-transferable under any circumstances.";

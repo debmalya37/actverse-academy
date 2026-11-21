@@ -426,19 +426,45 @@ function FAQ({ faqs }: { faqs: any[] }) {
  
 function FinalCTA() {
   return (
-    <section className="relative w-full overflow-hidden bg-ink py-16 text-center text-bone md:py-32">
-      <div className="filmstrip absolute inset-x-0 top-0 w-full" aria-hidden />
-      <Reveal className="mx-auto w-full max-w-4xl px-5">
-        {/* <p className="label-mono text-gold">Final scene</p> */}
-        <h2 className="mt-4 md:mt-6 text-5xl leading-[0.95] sm:text-7xl md:text-8xl">Lights. Camera. <em>Enrol.</em></h2>
-        <div className="mt-8 md:mt-10 flex w-full flex-col justify-center gap-3 sm:flex-row">
-          <a href="#demo" className="btn-gold flex w-full items-center justify-center text-center sm:w-auto md:text-lg">Enquire with Admissions</a>
-          <Button asChild variant="outline" className="h-12 w-full md:text-lg border-bone/50 bg-transparent text-bone hover:bg-cherry hover:border-cherry hover:text-bone sm:w-auto">
+    <section className="relative w-full overflow-hidden bg-ink py-20 text-center text-bone sm:py-24 md:py-32">
+      {/* Background image + dark scrim for legibility */}
+      <Image
+        src="/gala.png"
+        alt=""
+        fill
+        sizes="100vw"
+        aria-hidden
+        className="object-cover object-center"
+      />
+      <div
+        className="absolute inset-0 bg-ink/75 backdrop-blur-[1px]"
+        aria-hidden
+      />
+
+      <div className="filmstrip relative z-10 -mt-20 mb-10 w-full sm:-mt-24 md:-mt-32 md:mb-12" aria-hidden />
+
+      <Reveal className="relative z-10 mx-auto w-full max-w-4xl px-5">
+        <h2 className="mt-2 text-4xl leading-[0.98] sm:text-6xl md:mt-4 md:text-8xl">
+          Lights. Camera. <em>Enrol.</em>
+        </h2>
+        <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:mt-10 sm:w-auto sm:flex-row">
+          <a
+            href="#demo"
+            className="btn-gold flex h-12 w-full items-center justify-center px-6 text-center text-base sm:w-auto md:h-13 md:text-lg"
+          >
+            Enquire with Admissions
+          </a>
+          <Button
+            asChild
+            variant="outline"
+            className="h-12 w-full border-bone/50 bg-ink/40 px-6 text-base text-bone backdrop-blur-xs hover:border-cherry hover:bg-cherry hover:text-bone sm:w-auto md:h-13 md:text-lg"
+          >
             <Link href="/courses">See all courses</Link>
           </Button>
         </div>
       </Reveal>
-      <div className="filmstrip absolute inset-x-0 bottom-0 w-full" aria-hidden />
+
+      <div className="filmstrip relative z-10 mt-10 -mb-20 w-full sm:-mb-24 md:mt-12 md:-mb-32" aria-hidden />
     </section>
   );
 }

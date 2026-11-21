@@ -18,6 +18,7 @@ import theatre from "@/assets/theatre.jpg";
 import screen from "@/assets/screen.jpg";
 import emotionsBanner from "@/assets/emotions-banner.jpg"; 
 import emotionsBanner2 from "@/assets/emotions-banner2.jpeg"; 
+import emotionsBannerNew from "@/assets/hero1.png";
 import rehearsal from "@/assets/rehearsal.png";
 import { connection } from "next/server";
 import { HighlightStrip } from "@/components/highlight-strip";
@@ -105,33 +106,66 @@ export default async function HomePage() {
 
 function Hero() {
   return (
-    <section id="top" aria-label="Actverse Academy emotions banner" className="flex flex-col bg-ink">
-      
+    <section
+      id="top"
+      aria-label="Actverse Academy emotions banner"
+      className="flex flex-col bg-ink"
+    >
       {/* MOBILE & TABLET: Taller aspect ratio with object-cover so faces are clear and not microscopic */}
-      <div className="relative w-full aspect-[4/3] sm:aspect-[16/9] md:hidden">
-        <Image 
-          src={emotionsBanner} 
+      <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/9] md:hidden">
+        <Image
+          src={emotionsBannerNew}
           alt="The nine emotions of acting — Joy, Sadness, Anger, Fear, Surprise, Disgust, Trust, Anticipation and Love"
           fill
-          priority 
-          className="object-cover object-top" 
+          priority
+          className="object-cover object-top"
+        />
+
+        {/* Split left & right curtains opening outward */}
+        <div
+          aria-hidden
+          className="animate-curtain-left pointer-events-none absolute inset-y-0 left-0 z-10 w-1/2 border-r border-champagne/25 bg-ink"
+        />
+        <div
+          aria-hidden
+          className="animate-curtain-right pointer-events-none absolute inset-y-0 right-0 z-10 w-1/2 border-l border-champagne/25 bg-ink"
         />
       </div>
 
       {/* DESKTOP: Natural dimensions. Zero horizontal cropping. Scales perfectly without overflowing the screen height */}
-      <div className="hidden md:flex relative w-full justify-center bg-ink">
-        <Image 
-          src={emotionsBanner} 
-          alt="The nine emotions of acting — Joy, Sadness, Anger, Fear, Surprise, Disgust, Trust, Anticipation and Love"
-          width={1600}
-          height={596}
-          priority 
-          className="w-full h-auto max-h-[80vh] object-contain" 
-        />
+      <div className="relative hidden w-full justify-center overflow-hidden bg-ink md:flex">
+        <div className="relative flex w-full justify-center">
+          <Image
+            src={emotionsBanner}
+            alt="The nine emotions of acting — Joy, Sadness, Anger, Fear, Surprise, Disgust, Trust, Anticipation and Love"
+            width={1600}
+            height={596}
+            priority
+            className="h-auto max-h-[80vh] w-full object-contain"
+          />
+
+          {/* Split left & right curtains opening outward */}
+          <div
+            aria-hidden
+            className="animate-curtain-left pointer-events-none absolute inset-y-0 left-0 z-10 w-1/2 border-r border-champagne/30 bg-ink"
+          />
+          <div
+            aria-hidden
+            className="animate-curtain-right pointer-events-none absolute inset-y-0 right-0 z-10 w-1/2 border-l border-champagne/30 bg-ink"
+          />
+        </div>
       </div>
 
       <div className="grid h-1.5 w-full grid-cols-9" aria-hidden>
-        <span className="bg-joy-bright" /><span className="bg-sadness-bright" /><span className="bg-anger-bright" /><span className="bg-fear-bright" /><span className="bg-surprise-bright" /><span className="bg-disgust-bright" /><span className="bg-trust-bright" /><span className="bg-anticipation-bright" /><span className="bg-love-bright" />
+        <span className="bg-joy-bright" />
+        <span className="bg-sadness-bright" />
+        <span className="bg-anger-bright" />
+        <span className="bg-fear-bright" />
+        <span className="bg-surprise-bright" />
+        <span className="bg-disgust-bright" />
+        <span className="bg-trust-bright" />
+        <span className="bg-anticipation-bright" />
+        <span className="bg-love-bright" />
       </div>
     </section>
   );
@@ -435,45 +469,35 @@ function FAQ({ faqs }: { faqs: any[] }) {
  
 function FinalCTA() {
   return (
-    <section className="relative w-full overflow-hidden bg-ink py-20 text-center text-bone sm:py-24 md:py-32">
-      {/* Background image + dark scrim for legibility */}
+    <section className="relative flex min-h-[360px] w-full flex-col justify-between overflow-hidden bg-ink text-bone sm:min-h-[440px] md:min-h-[520px] lg:min-h-[580px]">
+      {/* Full-bleed background artwork */}
       <Image
         src="/gala.png"
         alt=""
         fill
         sizes="100vw"
         aria-hidden
-        className="object-cover object-center"
+        className="object-cover object-top sm:object-top md:object-top"
       />
+
+      {/* Light top vignette + stronger bottom scrim so text pops without hiding the center/top art */}
       <div
-        className="absolute inset-0 bg-ink/75 backdrop-blur-[1px]"
+        className="absolute inset-0 bg-gradient-to-b from-ink/25 via-ink/30 to-ink/85"
         aria-hidden
       />
 
-      <div className="filmstrip relative z-10 -mt-20 mb-10 w-full sm:-mt-24 md:-mt-32 md:mb-12" aria-hidden />
+      {/* Top filmstrip */}
+      <div className="filmstrip relative z-10 w-full" aria-hidden />
 
-      <Reveal className="relative z-10 mx-auto w-full max-w-4xl px-5">
-        <h2 className="mt-2 text-4xl leading-[0.98] sm:text-6xl md:mt-4 md:text-8xl">
-          Lights. Camera. <em>Enrol.</em>
+      {/* Positioned toward the bottom so the ACTVERSE ACADEMY banner & central figure stay clear */}
+      <Reveal className="relative z-10 mx-auto mt-auto w-full max-w-5xl px-5 pb-8 pt-16 text-center sm:px-8 sm:pb-10 md:pb-12">
+        <h2 className="text-3xl leading-[1.02] tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] sm:text-5xl md:text-6xl lg:text-7xl">
+          Lights. Camera. <em className="text-champagne">Enrol.</em>
         </h2>
-        <div className="mt-7 flex w-full flex-col justify-center gap-3 sm:mt-10 sm:w-auto sm:flex-row">
-          <a
-            href="#demo"
-            className="btn-gold flex h-12 w-full items-center justify-center px-6 text-center text-base sm:w-auto md:h-13 md:text-lg"
-          >
-            Enquire with Admissions
-          </a>
-          <Button
-            asChild
-            variant="outline"
-            className="h-12 w-full border-bone/50 bg-ink/40 px-6 text-base text-bone backdrop-blur-xs hover:border-cherry hover:bg-cherry hover:text-bone sm:w-auto md:h-13 md:text-lg"
-          >
-            <Link href="/courses">See all courses</Link>
-          </Button>
-        </div>
       </Reveal>
 
-      <div className="filmstrip relative z-10 mt-10 -mb-20 w-full sm:-mb-24 md:mt-12 md:-mb-32" aria-hidden />
+      {/* Bottom filmstrip */}
+      <div className="filmstrip relative z-10 w-full" aria-hidden />
     </section>
   );
 }

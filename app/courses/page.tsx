@@ -17,7 +17,7 @@ export default async function Courses() {
   const dbCourses = await prisma.course.findMany({
     where: { isActive: true },
     select: { slug: true, name: true, category: true, duration: true, fee: true, blurb: true },
-    orderBy: { createdAt: "desc" } // You can also add an 'order' field to the model to control display order
+    orderBy: { createdAt: "asc" } // You can also add an 'order' field to the model to control display order
   });
 
   return (

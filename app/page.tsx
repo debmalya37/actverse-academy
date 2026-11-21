@@ -59,14 +59,14 @@ export default async function HomePage() {
 
   return (
     <div className="grain relative flex min-h-screen w-full max-w-[100vw] flex-col overflow-x-clip pb-20 md:pb-0">
-      <div className="label-mono border-b hairline bg-ink py-2.5 text-center text-champagne w-full">
+      <div className="label-mono border-b  font-bold bg-ink py-2.5 text-center text-champagne w-full">
         Today’s dreamers. Tomorrow’s superstars.
       </div>
       <SiteHeader />
       <main className="flex-1 overflow-x-hidden w-full">
         <Hero />
         <Tagline />
-        <CallSheet courses={dbCourses} />
+        {/* <CallSheet courses={dbCourses} /> */}
         <Stages />
         <Emotions />
         <WhyChooseUs />
@@ -145,7 +145,7 @@ function Tagline() {
         </div>
         <figure className="mt-8 md:mt-12">
           <Image src={rehearsal} alt="Illustrative acting rehearsal with performers exploring a scene and fellow actors observing" loading="lazy" width={1600} height={912} className="aspect-[4/3] w-full object-cover sm:aspect-[16/7]" />
-          <figcaption className="mt-3 flex flex-wrap justify-between gap-2 font-mono text-xs text-muted-foreground"><span>Expression. Connection. Possibility.</span><span>Acting · Camera craft · Creative expression</span></figcaption>
+          <figcaption className="mt-3 flex flex-wrap justify-between gap-2 font-mono font-bold  text-sm text-black/70"><span>Expression. Connection. Possibility.</span><span>Acting · Camera craft · Creative expression</span></figcaption>
         </figure>
       </div>
     </section>
@@ -183,28 +183,63 @@ function Emotions() {
 
 function Stages() {
   const items = [
-    { k: "Theatre", img: theatre, alt: "Actors rehearsing on a wooden stage", d: "Breath, presence and the discipline of a live house. Learn to hold a room of three hundred people without a retake.", n: "A" },
-    { k: "Screen", img: screen, alt: "Actress on a film set", d: "Film, OTT and ads. Learn to think in frames, hit marks and make the camera believe you.", n: "B" },
+    {
+      k: "Theatre",
+      href: "/courses?category=THEATRE",
+      cta: "Explore theatre courses",
+      img: theatre,
+      alt: "Actors rehearsing on a wooden stage",
+      d: "Breath, presence and the discipline of a live house. Learn to hold a room of three hundred people without a retake.",
+      n: "A",
+    },
+    {
+      k: "Screen",
+      href: "/courses/advance-diploma-in-screen-acting",
+      cta: "Explore advanced screening course",
+      img: screen,
+      alt: "Actress on a film set",
+      d: "Film, OTT and ads. Learn to think in frames, hit marks and make the camera believe you.",
+      n: "B",
+    },
   ];
+
   return (
-    <section aria-labelledby="stage-h" className="w-full py-10 md:py-12">
+    <section aria-labelledby="stage-h" className="w-full py-8 md:py-10">
       <Reveal className="mx-auto w-full max-w-7xl px-5">
-        {/* <Label n="04" t="Choose your stage" tone="text-trust" /> */}
-        <h2 id="stage-h" className=" text-4xl leading-tight sm:text-5xl md:text-6xl">Two crafts. One <em className="!text-cherry">spotlight</em>.</h2>
+        <h2
+          id="stage-h"
+          className="text-3xl leading-tight sm:text-4xl md:text-5xl"
+        >
+          Find the Right Course for <em className="text-cherry">You</em>.
+        </h2>
       </Reveal>
-      <div className="mt-8 md:mt-12 grid w-full grid-cols-1 md:grid-cols-2">
+
+      <div className="mt-5 grid w-full grid-cols-1 md:mt-7 md:grid-cols-2">
         {items.map((s) => (
-          <Link key={s.k} href="/courses" className="group relative block aspect-square w-full overflow-hidden border-y hairline sm:aspect-[4/3] md:aspect-[4/5] md:border-x">
-            <Image src={s.img} alt={s.alt} fill className="bw-to-color object-cover transition-all duration-700 group-hover:scale-105" />
+          <Link
+            key={s.k}
+            href={s.href}
+            className="group relative block h-[340px] w-full overflow-hidden border-y hairline sm:h-[380px] md:h-[440px] md:border-x lg:h-[480px]"
+          >
+            <Image
+              src={s.img}
+              alt={s.alt}
+              fill
+              className="bw-to-color object-cover transition-all duration-700 group-hover:scale-105"
+            />
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-transparent" />
-            <div className="absolute inset-x-0 bottom-0 w-full p-6 sm:p-8 md:p-12">
+            <div className="absolute inset-x-0 bottom-0 w-full p-5 sm:p-6 md:p-8">
               <p className="label-mono text-gold">Roll {s.n}</p>
-              <h3 className="mt-2 text-5xl uppercase tracking-tight text-bone sm:text-6xl md:text-7xl">{s.k}</h3>
-              <p className="mt-3 w-full max-w-md text-base text-bone/90 sm:text-lg md:text-xl">{s.d}</p>
-              
-              {/* Upgraded Button: Distinct shape, border, and hover state so it's instantly recognized as a button */}
-              <div className="mt-6 md:mt-8  inline-flex h-12 items-center justify-center gap-2 rounded-md border border-bone/30 bg-bone/10 px-6 font-medium text-bone backdrop-blur-sm transition-all group-hover:bg-bone/40 group-hover:border-cherry group-hover:text-white">
-                Explore our courses <ArrowUpRight className="h-5 w-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              <h3 className="mt-1 text-4xl uppercase tracking-tight text-bone sm:text-5xl md:text-6xl">
+                {s.k}
+              </h3>
+              <p className="mt-2 line-clamp-2 w-full max-w-md text-sm text-bone/90 sm:text-base md:text-lg">
+                {s.d}
+              </p>
+
+              <div className="mt-4 inline-flex h-10 items-center justify-center gap-2 rounded-md border border-bone/30 bg-bone/10 px-5 text-sm font-medium text-bone backdrop-blur-sm transition-all group-hover:border-cherry group-hover:bg-bone/40 group-hover:text-white md:mt-5 md:h-11 md:text-base">
+                {s.cta}{" "}
+                <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1 md:h-5 md:w-5" />
               </div>
             </div>
           </Link>
@@ -213,7 +248,6 @@ function Stages() {
     </section>
   );
 }
-
 function WhyChooseUs() {
   const features = [
     { icon: GraduationCap, title: "Career-Focused Courses", desc: "1 Month to 3 Years of Structured Acting Programs." },
@@ -293,38 +327,54 @@ function Method() {
 
 function Faculty({ team }: { team: any[] }) {
   return (
-    <section id="faculty" className="mx-auto w-full max-w-7xl px-5 py-10 md:py-12">
-      {/* <Label n="06" t="Founders & faculty" tone="text-fear" /> */}
-      <h2 className=" text-4xl leading-tight sm:text-5xl md:text-6xl">People who nurture <em className="!text-cherry">talent</em>.</h2>
-      
-      <div className="mt-8 md:mt-12 grid w-full grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-        {team.map(p => (
+    <section
+      id="faculty"
+      className="mx-auto w-full max-w-7xl px-5 py-8 md:py-10"
+    >
+      <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl">
+        People who nurture <em className="!text-cherry">talent</em>.
+      </h2>
+
+      <div className="mt-5 grid w-full grid-cols-1 gap-x-5 gap-y-6 sm:grid-cols-2 md:mt-7 lg:grid-cols-3 lg:gap-x-6">
+        {team.map((p) => (
           <Reveal key={p.id}>
             <div className="group flex w-full flex-col">
-              <div className="relative mb-4 md:mb-5 aspect-[4/5] w-full overflow-hidden rounded-md bg-muted">
+              <div className="relative mb-3 h-[350px] w-full overflow-hidden rounded-md bg-muted sm:h-[400px] md:h-[400px] lg:h-[400px]">
                 {p.image ? (
-                  <Image 
-                    src={p.image} 
-                    alt={p.name} 
-                    fill 
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-gray-100 text-gray-400">
-                    <span className="text-sm uppercase tracking-widest">No Photo</span>
+                    <span className="text-xs uppercase tracking-widest">
+                      No Photo
+                    </span>
                   </div>
                 )}
               </div>
-              <p className="text-xs md:text-sm font-bold uppercase tracking-wider text-cherry">{p.role}</p>
-              <h3 className="mt-1 font-display text-2xl sm:text-3xl md:text-4xl">{p.name}</h3>
+              <p className="text-xs font-bold uppercase tracking-wider text-cherry">
+                {p.role}
+              </p>
+              <h3 className="mt-0.5 font-display text-xl sm:text-2xl md:text-3xl">
+                {p.name}
+              </h3>
             </div>
           </Reveal>
         ))}
       </div>
-      
-      <Button asChild variant="outline" className="mt-8 md:mt-12 h-12 w-full md:text-lg border-border text-foreground hover:bg-cherry hover:text-white sm:w-auto">
-        <Link href="/about">Meet our full team <ArrowUpRight className="ml-2 h-4 w-4 md:h-5 md:w-5" /></Link>
+
+      <Button
+        asChild
+        variant="outline"
+        className="mt-6 h-11 w-full border-border text-sm text-foreground hover:bg-cherry hover:text-white sm:w-auto md:mt-8 md:text-base"
+      >
+        <Link href="/about">
+          Meet our full team <ArrowUpRight className="ml-2 h-4 w-4" />
+        </Link>
       </Button>
     </section>
   );

@@ -91,7 +91,7 @@ export default async function AboutPage() {
 </section>
 
         {/* FOUNDER'S VISION */}
-        <section className="border-y border-bone/10 bg-cherry-deep py-14 text-bone sm:py-20 md:py-24 lg:py-28">
+        <section className="border-y border-bone/10 bg-cherry-deep py-12 text-bone sm:py-16 md:py-16 lg:py-16">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               {/* <Label n="02" t="Founder's Vision" tone="text-champagne/80" /> */}
@@ -105,7 +105,7 @@ export default async function AboutPage() {
               </blockquote>
               <div className="mt-7 flex items-center justify-center gap-3 sm:mt-9">
                 <span className="h-px w-8 bg-champagne/40" aria-hidden />
-                <p className="font-mono text-sm tracking-[0.2em] text-champagne uppercase sm:text-sm">
+                <p className="font-mono text-lg tracking-[0.2em] text-champagne uppercase sm:text-md">
                   Koushish Varade
                 </p>
                 <span className="h-px w-8 bg-champagne/40" aria-hidden />
@@ -117,10 +117,10 @@ export default async function AboutPage() {
         {/* FACULTY SECTION (Dynamic from DB) */}
         <section className="bg-paper py-12 text-paper-foreground sm:py-14 md:py-14 lg:py-14">
           <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-            <Reveal className="max-w-2xl">
+            <Reveal className="max-w-full">
               {/* <Label n="03" t="The Mentors" tone="text-cherry" /> */}
               <h2 className="mt-3 text-3xl leading-tight sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
-                Guidance from the <em className="!text-gold-deep">industry</em>.
+                Guidance from the <span className="text-gold-deep">industry</span>.
               </h2>
             </Reveal>
 
@@ -269,10 +269,10 @@ Versova, Andheri West,
                         Email Admissions
                       </h3>
                       <a
-                        href="mailto:actverseacademy@gmail.com"
+                        href="mailto:info.actverse@gmail.com"
                         className="mt-1.5 inline-flex items-center gap-1.5 break-all text-sm text-bone/80 transition-colors hover:text-champagne sm:text-base"
                       >
-                        actverseacademy@gmail.com
+                        info.actverse@gmail.com
                         <ArrowUpRight className="h-4 w-4 shrink-0 opacity-70" />
                       </a>
                     </div>

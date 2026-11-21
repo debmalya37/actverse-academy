@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { AdmissionsNotes } from "@/components/admissions-notes";
 import { danceForms, formatFee, PHONE } from "@/lib/site-data";
 import prisma from "@/lib/prisma";
+import { HighlightStrip } from "@/components/highlight-strip";
 
 export const instant = false;
 
@@ -112,26 +113,7 @@ export default async function CourseDetail({
       </section>
 
       {/* Minimalist Highlights Strip */}
-      <section
-        aria-label="Course highlights"
-        className="border-b border-border bg-paper/50 text-paper-foreground"
-      >
-        <div className="mx-auto max-w-7xl px-5 py-6 sm:px-8 lg:px-10 lg:py-8">
-          <div className="grid grid-cols-2 gap-x-4 gap-y-4 sm:gap-x-8 lg:grid-cols-4">
-            {HIGHLIGHTS.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-3">
-                <Icon
-                  className="h-5 w-5 shrink-0 text-cherry lg:h-6 lg:w-6"
-                  strokeWidth={1.75}
-                />
-                <span className="text-[clamp(0.875rem,1.15vw,1.125rem)] font-medium tracking-tight text-foreground">
-                  {label}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <HighlightStrip items={HIGHLIGHTS} ariaLabel="Course highlights" />
 
       {/* Main Content */}
       <section className="mx-auto max-w-7xl px-5 py-12 sm:px-8 md:py-20 lg:px-10 lg:py-24">

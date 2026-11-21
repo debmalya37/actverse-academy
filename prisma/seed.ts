@@ -38,7 +38,7 @@ async function main() {
 
   const facultyData = [
     {
-      name: "Koushish",
+      name: "Koushish Varade",
       role: "Awardee Director, Producer & Founder — Kiida Films and Actverse Academy",
       bio: "Koushish Varade is a director, producer, and founder of Kiida Films and Actverse Academy. His work spans feature films, web series, vertical dramas, music videos, advertisements, promotional films, and documentaries. His project credits include Yeh Saali Aashiqui, Murder in Mahim, and Illegal Season 2. His documentary Tri-Services – All-Women Circumnavigation Sailing Expedition received an Honorable Jury Mention at the 16th Dada Saheb Phalke Film Festival 2026, alongside multiple official selections. His advertisements and promotional videos have also received notable recognition. Through Actverse Academy, he is committed to nurturing emerging talent and preparing aspiring performers for the entertainment industry.",
       order: 1,
@@ -48,56 +48,56 @@ async function main() {
       linkedinUrl: "https://linkedin.com/"
     },
     {
-      name: "Krishnkant ",
+      name: "Krishnkant Agarwal",
       role: "Co-Founder",
       bio: "Krishnkant Agrawal is a Mumbai-based filmmaker, director, and editor with 5+ years of experience across web series, advertisements, music videos, and vertical series. Drawn to human psychology and meaningful storytelling, he believes every frame should serve a purpose and every cut convey emotion. As co-founder of an acting academy, he aims to help aspiring actors discover their individuality, build confidence, and sharpen their craft through practical, camera-focused training and industry exposure.",
       order: 2,
       image: "/faculty/Krishnkant.png",
     },
     {
-      name: "Ashwini ",
+      name: "Ashwini Chaudhary",
       role: "Celebrity Lecturer & Consultant",
       bio: "Ashwini Chaudhary is an acclaimed Indian filmmaker, director, writer, and producer whose work spans feature films, television, and OTT. He made his feature-film debut with Laado, which received the National Film Award for Best First Film of a Director. His notable directing credits include Dhoop, Siskiyaan, Good Boy, Bad Boy, Jodi Breakers, Setters, and Illegal – Justice, Out of Order. With extensive experience in storytelling and directing performers, Ashwini brings valuable industry insight to Edwards Academy as a Celebrity Lecturer and Consultant, inspiring aspiring talent to develop their craft, confidence, and creative vision.",
       order: 3,
       image: "/faculty/Ashwini.png",
     },
     {
-      name: "Amano ",
+      name: "Amano Dhyan",
       role: "Head Faculty",
       bio: "With 16+ years of industry experience, Amano Dhyan has worked on popular television shows including Yeh Rishta Kya Kehlata Hai, Bidaai, Mere Sai, and Nimki Mukhiya, along with the National Award-winning film Bahattar Hoorain. As an acting coach, he has trained 1,000+ actors, helping aspiring performers build their skills and confidence for the screen. His experience across acting, casting, and coaching brings students valuable industry insight and practical guidance as they prepare to pursue their own acting careers.",
       order: 4,
       image: "/faculty/Amano.png",
     },
     {
-      name: "Atul ",
+      name: "Atul Shukla",
       role: "Creative Head — Actverse Academy",
       bio: "Atul Shukla is a creative professional with expertise in filmmaking, production, and visual storytelling. He holds a Master’s degree in Foreign Trade, a Level 1 Diploma in French, and diploma certifications in Animation and VFX. As a Producer with Kiida Films Productions, his portfolio includes advertising campaigns, YU 11, two vertical drama series for Kuku TV, and an award-winning documentary associated with the Indian Armed Forces. His work combines creative vision with impactful storytelling and compelling visual experiences.",
       order: 9,
       image: "/faculty/Atul.png",
     },
     {
-      name: "Tapan ",
+      name: "Tapan Sharma",
       role: "Actor & Acting Mentor",
       bio: "Tapan Sharma is an inspiring actor and acting mentor who has spent the last 10–12 years guiding young performers. With a passion for nurturing talent, he has trained more than 50 students, many of whom are now working in television and films, with several emerging as promising faces in the industry. A thoughtful teacher and dedicated performer, Tapan understands the emotions of today’s generation and the evolving language of screen storytelling. Through his guidance, he helps students build confidence, explore their individuality, and develop their craft with patience, care, and a genuine love for acting.",
       order: 5,
       image: "/faculty/Tapan.png",
     },
     {
-      name: "Nandini ",
+      name: "Nandini Bodse",
       role: "Head Dance Faculty — Actverse Academy",
       bio: "Nandini Bodse is a passionate dance instructor with 7 years of teaching experience. As Head Dance Faculty at Actverse Academy, she trains aspiring actors in a variety of dance styles, including Hip-Hop, Indian, Western, classical, contemporary, Garba, and salsa. Her classes focus on choreography, rhythm, and facial expressions—helping students communicate emotion through movement and bring greater depth to their on-screen performances.",
       order: 6,
       image: "/faculty/Nandini.png",
     },
     {
-      name: "Himanshu ",
+      name: "Himanshu Vishwakarma",
       role: "Head Dance Faculty — Actverse Academy",
       bio: "Himanshu Vishwakarma is an experienced dancer and mentor with a strong presence in the dance community. As Head Dance Faculty at Actverse Academy, he will train aspiring actors in a range of styles, including Indian, Western, classical, contemporary, Garba, and salsa. His classes focus on rhythm, choreography, and expressive movement—helping students use dance and facial expressions to bring emotion and depth to their on-screen performances.",
       order: 7,
       image: "/faculty/Himanshu.png",
     },
     {
-      name: "Tanvi ",
+      name: "Tanvi Jain",
       role: "Founder, Networkly Digital | Digital Faculty — Actverse Academy",
       bio: "Tanvi Jain is the founder of Networkly Digital and a digital branding professional who has helped build and grow brands from the ground up. Her experience spans brand identity, content strategy, and digital reach across businesses, including builders, academies, and colleges. As Digital Faculty at Actverse Academy, she will help aspiring actors develop a strong professional presence beyond the camera. Through practical guidance in personal branding, content creation, and social media strategy, she will teach students how to showcase their talent, connect with audiences, and build visibility for their acting careers.",
       order: 8,

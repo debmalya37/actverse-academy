@@ -20,6 +20,7 @@ import emotionsBanner from "@/assets/emotions-banner.jpg";
 import emotionsBanner2 from "@/assets/emotions-banner2.jpeg"; 
 import rehearsal from "@/assets/rehearsal.png";
 import { connection } from "next/server";
+import { HighlightStrip } from "@/components/highlight-strip";
 
 export const instant = false;
 
@@ -39,6 +40,13 @@ export const metadata = {
 const Label = ({ n, t, tone = "text-gold" }: { n: string; t: string; tone?: string }) => (
   <p className={`label-mono ${tone}`}>Scene {n} · {t}</p>
 );
+
+const HIGHLIGHTS = [
+  { icon: GraduationCap, label: "Valuable Course" },
+  { icon: Star, label: "Big Stage" },
+  { icon: Home, label: "Easy Accommodation" },
+  { icon: MapPin, label: "Prime Location" },
+] as const;
 
 export default async function HomePage() {
   await connection();
@@ -70,6 +78,7 @@ export default async function HomePage() {
         <Stages />
         <Emotions />
         <WhyChooseUs />
+        <HighlightStrip items={HIGHLIGHTS} ariaLabel="Course highlights" />
         <div className="filmstrip w-full" aria-hidden />
         <Method />
         <Faculty team={dbFaculty} />

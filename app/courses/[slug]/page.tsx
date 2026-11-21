@@ -14,7 +14,6 @@ import { SiteShell } from "@/components/site-shell";
 import { Button } from "@/components/ui/button";
 import { AdmissionsNotes } from "@/components/admissions-notes";
 import { danceForms, formatFee, PHONE } from "@/lib/site-data";
-import { GoKwikButton } from "@/components/gokwik-button";
 import prisma from "@/lib/prisma";
 
 export const instant = false;
@@ -96,17 +95,17 @@ export default async function CourseDetail({
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <Link
             href="/courses"
-            className="inline-flex items-center text-[clamp(0.875rem,1vw,1rem)] font-medium tracking-wide text-champagne/90 transition-colors hover:text-bone"
+            className="inline-flex items-center text-[clamp(0.875rem,1vw,1.0625rem)] font-medium tracking-wide text-champagne/90 transition-colors hover:text-bone"
           >
             ← All courses
           </Link>
           <p className="label-mono mt-6 text-champagne md:mt-8">
             {course.category} · Actverse Academy
           </p>
-          <h1 className="mt-3 max-w-4xl text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] tracking-tight md:mt-4">
+          <h1 className="mt-3 max-w-4xl text-[clamp(2rem,4.5vw,4.25rem)] leading-[1.1] tracking-tight md:mt-4">
             {course.name}
           </h1>
-          <p className="mt-4 max-w-2xl text-[clamp(1rem,1.4vw,1.25rem)] leading-relaxed text-bone/90 md:mt-6">
+          <p className="mt-4 max-w-2xl text-[clamp(1rem,1.45vw,1.35rem)] leading-relaxed text-bone/95 md:mt-6">
             {course.blurb}
           </p>
         </div>
@@ -125,7 +124,7 @@ export default async function CourseDetail({
                   className="h-5 w-5 shrink-0 text-cherry lg:h-6 lg:w-6"
                   strokeWidth={1.75}
                 />
-                <span className="text-[clamp(0.875rem,1.1vw,1.0625rem)] font-medium tracking-tight text-foreground">
+                <span className="text-[clamp(0.875rem,1.15vw,1.125rem)] font-medium tracking-tight text-foreground">
                   {label}
                 </span>
               </div>
@@ -143,16 +142,16 @@ export default async function CourseDetail({
             <div className="grid grid-cols-2 gap-6 border-y border-border py-6 sm:gap-10 md:py-9">
               <div>
                 <p className="label-mono text-cherry">Duration</p>
-                <p className="mt-2 font-display text-[clamp(1.25rem,2.2vw,2.125rem)] font-semibold">
+                <p className="mt-2 font-display text-[clamp(1.25rem,2.3vw,2.25rem)] font-semibold">
                   {course.duration}
                 </p>
               </div>
               <div className="border-l border-border pl-6 sm:pl-10">
                 <p className="label-mono text-cherry">Full-payment fee</p>
-                <p className="mt-2 font-display text-[clamp(1.5rem,2.8vw,2.75rem)] font-semibold">
+                <p className="mt-2 font-display text-[clamp(1.5rem,2.9vw,2.85rem)] font-semibold">
                   {formatFee(course.fee)}
                 </p>
-                <p className="mt-1.5 text-[clamp(0.75rem,0.9vw,0.875rem)] text-muted-foreground">
+                <p className="mt-1.5 text-[clamp(0.8rem,0.95vw,0.95rem)] text-foreground/75">
                   Taxes applicable as per govt. norms.
                 </p>
               </div>
@@ -161,10 +160,10 @@ export default async function CourseDetail({
             {/* About the Course */}
             {course.description && (
               <div>
-                <h2 className="font-display text-[clamp(1.5rem,2.4vw,2.25rem)] font-semibold tracking-tight">
+                <h2 className="font-display text-[clamp(1.5rem,2.5vw,2.375rem)] font-semibold tracking-tight">
                   About the Course
                 </h2>
-                <div className="mt-4 max-w-prose whitespace-pre-wrap text-[clamp(0.95rem,1.15vw,1.125rem)] leading-relaxed text-muted-foreground md:mt-5 md:leading-8">
+                <div className="mt-4 max-w-prose whitespace-pre-wrap text-[clamp(0.95rem,1.25vw,1.25rem)] leading-relaxed text-foreground/85 md:mt-5 md:leading-8">
                   {course.description}
                 </div>
               </div>
@@ -174,7 +173,7 @@ export default async function CourseDetail({
             {course.syllabusModules.length > 0 && (
               <div className="border-t border-border pt-10 md:pt-14">
                 <p className="label-mono text-cherry">Syllabus</p>
-                <h2 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,2.25rem)] font-semibold tracking-tight">
+                <h2 className="mt-2 font-display text-[clamp(1.5rem,2.5vw,2.375rem)] font-semibold tracking-tight">
                   Curriculum
                 </h2>
                 <div className="mt-6 space-y-7 md:mt-9 md:space-y-9">
@@ -183,17 +182,17 @@ export default async function CourseDetail({
                       key={module.id}
                       className="border-l border-cherry/40 pl-4 sm:pl-6 lg:pl-7"
                     >
-                      <p className="label-mono text-muted-foreground">
+                      <p className="label-mono text-foreground/70">
                         Module {String(index + 1).padStart(2, "0")}
                       </p>
-                      <h3 className="mt-1 text-[clamp(1.125rem,1.5vw,1.5rem)] font-semibold text-foreground">
+                      <h3 className="mt-1 text-[clamp(1.15rem,1.6vw,1.625rem)] font-semibold text-foreground">
                         {module.title}
                       </h3>
-                      <p className="mt-2 text-[clamp(0.95rem,1.1vw,1.0625rem)] leading-relaxed text-muted-foreground">
+                      <p className="mt-2 text-[clamp(0.95rem,1.2vw,1.1875rem)] leading-relaxed text-foreground/85 md:leading-8">
                         {module.description}
                       </p>
                       {module.practicalActivities && (
-                        <p className="mt-3 rounded-md border border-border/60 bg-paper/60 px-4 py-3 text-[clamp(0.875rem,1vw,0.95rem)] leading-relaxed text-paper-foreground/85">
+                        <p className="mt-3 rounded-md border border-border/70 bg-paper/70 px-4 py-3 text-[clamp(0.9rem,1.1vw,1.0625rem)] leading-relaxed text-foreground/90">
                           <span className="font-semibold text-foreground">
                             Practical:
                           </span>{" "}
@@ -211,7 +210,7 @@ export default async function CourseDetail({
               <p className="label-mono text-cherry">
                 Included with every batch
               </p>
-              <h2 className="mt-2 font-display text-[clamp(1.5rem,2.4vw,2.25rem)] font-semibold tracking-tight">
+              <h2 className="mt-2 font-display text-[clamp(1.5rem,2.5vw,2.375rem)] font-semibold tracking-tight">
                 Additional Student Benefits
               </h2>
               <ul className="mt-6 grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 md:mt-8 md:gap-y-5">
@@ -220,7 +219,7 @@ export default async function CourseDetail({
                     <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cherry/10 text-cherry">
                       <Check className="h-3.5 w-3.5" strokeWidth={2.5} />
                     </span>
-                    <span className="text-[clamp(0.95rem,1.1vw,1.0625rem)] leading-relaxed text-foreground/90">
+                    <span className="text-[clamp(0.95rem,1.2vw,1.1875rem)] leading-relaxed text-foreground/90">
                       {benefit}
                     </span>
                   </li>
@@ -233,10 +232,10 @@ export default async function CourseDetail({
           <aside className="lg:sticky lg:top-28">
             <div className="rounded-2xl border border-border bg-paper p-6 text-paper-foreground sm:p-8 lg:p-10">
               <p className="label-mono text-cherry">Admissions</p>
-              <h2 className="mt-2 font-display text-[clamp(1.5rem,2.2vw,2rem)] font-semibold">
+              <h2 className="mt-2 font-display text-[clamp(1.5rem,2.3vw,2.125rem)] font-semibold">
                 Your next step
               </h2>
-              <p className="mt-3 text-[clamp(0.95rem,1.1vw,1.0625rem)] leading-relaxed text-muted-foreground">
+              <p className="mt-3 text-[clamp(0.95rem,1.18vw,1.15rem)] leading-relaxed text-foreground/80">
                 Speak with our admissions team about the curriculum, upcoming
                 batches, and available offers for this program.
               </p>
@@ -246,17 +245,13 @@ export default async function CourseDetail({
                   <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground">
                     Dance forms covered
                   </h3>
-                  <p className="mt-2 text-[clamp(0.875rem,1vw,0.95rem)] leading-relaxed text-muted-foreground">
+                  <p className="mt-2 text-[clamp(0.9rem,1.1vw,1.0625rem)] leading-relaxed text-foreground/80">
                     {danceForms.join(" · ")}
                   </p>
                 </div>
               )}
 
               <div className="mt-6 flex flex-col gap-3 lg:mt-8 lg:gap-4">
-                {/* {course.fee && (
-                  <GoKwikButton courseName={course.name} fee={course.fee} />
-                )} */}
-
                 <Button
                   asChild
                   className="h-12 w-full bg-cta text-base text-primary-foreground hover:bg-cherry lg:h-14"
@@ -288,7 +283,7 @@ export default async function CourseDetail({
                 <Button
                   asChild
                   variant="ghost"
-                  className="h-11 w-full text-base text-muted-foreground hover:text-cherry"
+                  className="h-11 w-full text-base text-foreground/75 hover:text-cherry"
                 >
                   <a href={`tel:+91${PHONE}`}>
                     <Phone className="mr-2 h-4 w-4" />

@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import { deleteCourse } from "@/actions/courses";
 import { Button } from "@/components/ui/button";
 import { Edit, Trash2, Plus, ListChecks } from "lucide-react";
-
+export const instant = false;
 export default async function CoursesPage() {
   const courses = await prisma.course.findMany({
     orderBy: { createdAt: "desc" },

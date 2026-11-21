@@ -3,7 +3,7 @@ import { SyllabusManager } from "../_components/SyllabusManager";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-
+export const instant = false;
 export default async function EditCoursePage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   

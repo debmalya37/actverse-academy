@@ -40,66 +40,62 @@ export default async function AboutPage() {
 
       <main className="flex-1 overflow-x-hidden">
         {/* HERO SECTION — Philosophy */}
-        <section className="relative bg-ink py-14 text-bone sm:py-24 md:py-24 lg:py-24">
-          <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
-            <Reveal>
-              {/* <Label n="01" t="Our Philosophy" tone="text-champagne" /> */}
-              <h1 className="mt-4 max-w-5xl text-4xl leading-[1.08] tracking-tight sm:text-5xl md:mt-6 md:text-6xl lg:text-7xl">
-                IT’S TIME TO SHINE
-                <span className="mt-2 block font-display italic text-champagne">
-                  WITH ACTVERSE ACADEMY
-                </span>
-              </h1>
-            </Reveal>
+        <section className="relative bg-ink py-10 text-bone sm:py-14 lg:flex lg:min-h-[calc(100vh-5rem)] lg:items-center lg:py-10">
+  <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
+    <Reveal>
+      <h1 className="max-w-5xl text-3xl leading-[1.08] tracking-tight sm:text-5xl lg:text-5xl xl:text-6xl">
+        IT’S TIME TO SHINE{" "}
+        <span className="mt-1 block font-display italic text-champagne lg:mt-0.5">
+          WITH ACTVERSE ACADEMY
+        </span>
+      </h1>
+    </Reveal>
 
-            <div className="mt-10 grid grid-cols-1 gap-8 border-t hairline pt-8 sm:mt-14 sm:pt-10 md:grid-cols-2 md:gap-14 lg:mt-16 lg:gap-20 lg:pt-12">
-              <Reveal className="space-y-5 md:space-y-6">
-                <p className="text-base leading-relaxed text-bone/85 sm:text-lg lg:text-xl lg:leading-8">
-                  Every superstar begins with a dream. Every award-winning
-                  performance starts with a first step. At{" "}
-                  <strong className="font-semibold text-bone">
-                    Actverse Academy
-                  </strong>
-                  , we help young dreamers discover their talent, build
-                  confidence, and take their first steps towards the exciting
-                  world of cinema, acting, and creative expression.
-                </p>
-                <p className="text-base leading-relaxed text-bone/80 sm:text-lg lg:text-xl lg:leading-8">
-                  For aspiring actors, we provide a space to learn the craft,
-                  explore characters, experience the camera, and master the art
-                  of performance. For students discovering their strengths, we
-                  nurture creativity, communication, self-awareness, and
-                  confidence.
-                </p>
-              </Reveal>
+    <div className="mt-6 grid grid-cols-1 gap-6 border-t hairline pt-6 sm:mt-8 sm:pt-8 md:grid-cols-2 md:gap-10 lg:mt-8 lg:gap-14 lg:pt-7">
+      <Reveal className="space-y-4 lg:space-y-4">
+        <p className="text-base leading-relaxed text-bone/90 lg:text-[1.0625rem] lg:leading-7">
+          Every superstar begins with a dream. Every award-winning performance
+          starts with a first step. At{" "}
+          <strong className="font-semibold text-bone">Actverse Academy</strong>,
+          we help young dreamers discover their talent, build confidence, and
+          take their first steps towards the exciting world of cinema, acting,
+          and creative expression.
+        </p>
+        <p className="text-base leading-relaxed text-bone/85 lg:text-[1.0625rem] lg:leading-7">
+          For aspiring actors, we provide a space to learn the craft, explore
+          characters, experience the camera, and master the art of performance.
+          For students discovering their strengths, we nurture creativity,
+          communication, self-awareness, and confidence.
+        </p>
+      </Reveal>
 
-              <Reveal className="flex flex-col justify-between space-y-6">
-                <p className="text-base leading-relaxed text-bone/80 sm:text-lg lg:text-xl lg:leading-8">
-                  From mastering the camera and bringing characters to life to
-                  preparing for auditions and owning the spotlight, we nurture
-                  the skills, creativity, and courage that help talent grow. We
-                  create an environment where every individual&apos;s uniqueness
-                  is valued, and hidden abilities are encouraged to flourish.
-                </p>
-                <div className="border-l-2 border-champagne/60 pl-5">
-                  <p className="font-display text-xl font-semibold leading-snug text-champagne sm:text-2xl lg:text-3xl">
-                    Find yourself with Actverse Academy.
-                    <span className="mt-1 block text-bone">
-                      Because it’s TIME TO SHINE.
-                    </span>
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </section>
+      <Reveal className="flex flex-col justify-between space-y-5 lg:space-y-4">
+        <p className="text-base leading-relaxed text-bone/85 lg:text-[1.0625rem] lg:leading-7">
+          From mastering the camera and bringing characters to life to preparing
+          for auditions and owning the spotlight, we nurture the skills,
+          creativity, and courage that help talent grow. We create an
+          environment where every individual&apos;s uniqueness is valued, and
+          hidden abilities are encouraged to flourish.
+        </p>
+        <div className="border-l-2 border-champagne/60 pl-4 sm:pl-5">
+          <p className="font-display text-xl font-semibold leading-snug text-champagne sm:text-2xl lg:text-[1.45rem]">
+            Find yourself with Actverse Academy.
+            <span className="mt-0.5 block text-bone">
+              Because it’s TIME TO SHINE.
+            </span>
+          </p>
+        </div>
+      </Reveal>
+    </div>
+  </div>
+</section>
 
         {/* FOUNDER'S VISION */}
         <section className="border-y border-bone/10 bg-cherry-deep py-14 text-bone sm:py-20 md:py-24 lg:py-28">
           <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
             <Reveal>
               {/* <Label n="02" t="Founder's Vision" tone="text-champagne/80" /> */}
-              <blockquote className="mt-6 font-display text-xl font-medium leading-relaxed text-bone/95 sm:mt-8 sm:text-2xl md:text-3xl md:leading-snug lg:text-4xl lg:leading-snug">
+              <blockquote className="mt-6 font-display text-xl font-medium leading-relaxed text-bone/95 sm:mt-8 sm:text-2xl md:text-3xl md:leading-snug lg:text-3xl lg:leading-snug">
                 &ldquo;My vision is to discover and nurture the next generation
                 of stars—training aspiring actors, creating real opportunities,
                 and helping their talent shine on screen. I believe a director’s
@@ -109,7 +105,7 @@ export default async function AboutPage() {
               </blockquote>
               <div className="mt-7 flex items-center justify-center gap-3 sm:mt-9">
                 <span className="h-px w-8 bg-champagne/40" aria-hidden />
-                <p className="font-mono text-xs tracking-[0.2em] text-champagne uppercase sm:text-sm">
+                <p className="font-mono text-sm tracking-[0.2em] text-champagne uppercase sm:text-sm">
                   Koushish Varade
                 </p>
                 <span className="h-px w-8 bg-champagne/40" aria-hidden />
@@ -230,11 +226,12 @@ export default async function AboutPage() {
                         Academy Location
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-bone/80 sm:text-base">
-                        Bungalow No. 39, Near Mukesh Chhabra Casting,
+                        Bungalow No. 39,
                         <br />
-                        Aram Nagar 2, Versova, Andheri West,
+                        35/2, D-Mart lane, Aram Nagar Part 2, Jeet Nagar,
+Versova, Andheri West, 
                         <br />
-                        Mumbai 400061
+                        Mumbai, Maharashtra 400061
                       </p>
                       <p className="mt-3 text-xs leading-relaxed text-bone/60 italic sm:text-sm">
                         Actverse Academy is situated in the heart of the Dream

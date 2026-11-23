@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { EMAIL, PHONE, WHATSAPP_URL } from "@/lib/site-data";
 import prisma from "@/lib/prisma";
 import { connection } from "next/server";
+import Image from "next/image";
+import { Reveal } from "@/components/ui/reveal";
 
 export const instant = false;
 
@@ -14,6 +16,40 @@ export const metadata = {
     "Get in touch with Actverse Academy in Versova, Mumbai for acting courses, dance training, batch schedules, and admissions enquiries.",
 };
 
+function FinalCTA() {
+  return (
+    <section className="relative flex min-h-[360px] w-full flex-col justify-between overflow-hidden bg-ink text-bone sm:min-h-[440px] md:min-h-[520px] lg:min-h-[580px]">
+      {/* Full-bleed background artwork */}
+      <Image
+        src="/gala.png"
+        alt=""
+        fill
+        sizes="100vw"
+        aria-hidden
+        className="object-cover object-top sm:object-top md:object-top"
+      />
+
+      {/* Light top vignette + stronger bottom scrim so text pops without hiding the center/top art */}
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-ink/25 via-ink/30 to-ink/85"
+        aria-hidden
+      />
+
+      {/* Top filmstrip */}
+      {/* <div className="filmstrip relative z-10 w-full" aria-hidden /> */}
+
+      {/* Positioned toward the bottom so the ACTVERSE ACADEMY banner & central figure stay clear */}
+      {/* <Reveal className="relative z-10 mx-auto mt-auto w-full max-w-5xl px-5 pb-8 pt-16 text-center sm:px-8 sm:pb-10 md:pb-12">
+        <h2 className="text-3xl leading-[1.02] tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] sm:text-5xl md:text-6xl lg:text-7xl">
+          Lights. Camera. <em className="text-champagne">Enrol.</em>
+        </h2>
+      </Reveal> */}
+
+      {/* Bottom filmstrip */}
+      {/* <div className="filmstrip relative z-10 w-full" aria-hidden /> */}
+    </section>
+  );
+}
 export default async function ContactPage() {
   await connection();
 
@@ -112,6 +148,7 @@ export default async function ContactPage() {
           <ContactForm courses={courses} />
         </div>
       </section>
+          <FinalCTA />
     </SiteShell>
   );
 }

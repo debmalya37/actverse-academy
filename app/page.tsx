@@ -181,7 +181,7 @@ function Tagline() {
           <div>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">At Actverse Academy, we help young dreamers discover their talent, build confidence, and take their first steps towards cinema, acting, and creative expression.</p>
             <div className="mt-6 flex flex-wrap gap-3">
-              <Button asChild className="h-12 bg-cta text-primary-foreground hover:bg-cherry"><a href="#courses">Explore Courses <ArrowUpRight /></a></Button>
+              <Button asChild className="h-12 bg-cta text-primary-foreground hover:bg-cherry"><Link href="/courses">Explore Courses <ArrowUpRight /></Link></Button>
               <Button asChild variant="outline" className="h-12"><Link href="/about">About the academy</Link></Button>
             </div>
           </div>

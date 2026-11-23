@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   title: "Actverse Academy — Acting Classes in Mumbai",
   description: "Discover acting foundation programs, diplomas, workshops and dance training at Actverse Academy in Versova, Mumbai.",
   icons: {
-    icon: "/favicon.ico", // Ensure you have a favicon in the public/ folder
+    icon: "/icon.png", // Ensure you have a favicon in the public/ folder
   },
 };
 

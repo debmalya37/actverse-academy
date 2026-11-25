@@ -69,7 +69,7 @@ export default async function HomePage() {
   return (
     <div className="grain relative flex min-h-screen w-full max-w-[100vw] flex-col overflow-x-clip pb-20 md:pb-0">
       <div className="label-mono border-b  font-bold bg-ink py-2.5 text-center text-champagne w-full">
-        Today’s dreamers. Tomorrow’s superstars.
+        Today’s dreamers  | Tomorrow’s superstars
       </div>
       <SiteHeader />
       <main className="flex-1 overflow-x-hidden w-full">
@@ -177,7 +177,7 @@ function Tagline() {
       <div className="mx-auto max-w-7xl px-5">
         {/* <div className="flex items-center gap-4 "><span className="h-px w-10 bg-cherry" aria-hidden /><Label n="01" t="Time to shine"  tone="text-cherry" /></div> */}
         <div className="mt-6 grid gap-7 lg:grid-cols-[1.4fr_1fr] lg:items-end lg:gap-12">
-          <h1 id="tagline-h" className="text-2xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl">Today’s Dreamers.<br /><em className="text-cherry">Tomorrow’s Superstars.</em></h1>
+          <h1 id="tagline-h" className="text-2xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl">Today’s Dreamers<br /><em className="text-cherry">Tomorrow’s Superstars</em></h1>
           <div>
             <p className="max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">At Actverse Academy, we help young dreamers discover their talent, build confidence, and take their first steps towards cinema, acting, and creative expression.</p>
             <div className="mt-6 flex flex-wrap gap-3">
@@ -201,7 +201,7 @@ function Emotions() {
       style={{ "--border": "oklch(0.16 0.01 50 / 15%)", "--card": "var(--paper)" } as React.CSSProperties}>
       <Reveal className="mx-auto w-full max-w-7xl px-5">
         {/* <Label n="03" t="The actor's palette" tone="text-love" /> */}
-        <h2 id="emo-h" className="w-full max-w-3xl text-4xl leading-tight sm:text-5xl md:text-6xl">Nine emotions. One <em className="!text-gold-deep">instrument</em> — you.</h2>
+        <h2 id="emo-h" className="w-full max-w-3xl text-4xl leading-tight sm:text-5xl md:text-6xl">Nine emotions | One <em className="!text-gold-deep">instrument</em> — you</h2>
         <p className="mt-5 w-full max-w-xl text-base text-paper-foreground/70 sm:text-lg md:text-xl">
           Explore the emotions that bring characters to life — a palette of expression, connection and individuality.
         </p>
@@ -253,7 +253,7 @@ function Stages() {
           id="stage-h"
           className="text-3xl leading-tight sm:text-4xl md:text-5xl"
         >
-          Find the Right Course for <em className="text-cherry">You</em>.
+          Find the Right Course for <em className="text-cherry">You</em>
         </h2>
       </Reveal>
 
@@ -348,7 +348,7 @@ function Method() {
       <div className="mx-auto w-full max-w-7xl px-5">
         <Reveal>
           {/* <Label n="05" t="The Method" tone="text-surprise-bright" /> */}
-          <h2 id="method-h" className=" text-4xl leading-tight sm:text-5xl md:text-6xl">From read-through to <em>premiere</em>.</h2>
+          <h2 id="method-h" className=" text-4xl leading-tight sm:text-5xl md:text-6xl">From read-through to <em>premiere</em></h2>
         </Reveal>
         <ol className="relative mt-10 md:mt-14 grid w-full gap-8 md:grid-cols-4 md:gap-6">
           <div className="absolute left-0 right-0 top-[7px] hidden h-px w-full bg-gold-cta/40 md:block" aria-hidden />
@@ -375,7 +375,7 @@ function Faculty({ team }: { team: any[] }) {
       className="mx-auto w-full max-w-7xl px-5 py-8 md:py-10"
     >
       <h2 className="text-3xl leading-tight sm:text-4xl md:text-5xl">
-        People who nurture <em className="!text-cherry">talent</em>.
+        People who nurture <em className="!text-cherry">talent</em>
       </h2>
 
       <div className="mt-5 grid w-full grid-cols-1 gap-x-5 gap-y-6 sm:grid-cols-2 md:mt-7 lg:grid-cols-3 lg:gap-x-6">
@@ -428,7 +428,7 @@ function DemoForm() {
     <section id="demo" className="w-full bg-card py-10 md:py-12">
       <div className="mx-auto w-full max-w-7xl px-5">
         {/* <Label n="10" t="Admissions" tone="text-anger" /> */}
-        <h2 className="text-4xl leading-tight sm:text-5xl md:text-6xl">Let’s talk about your <em className="text-cherry">dream</em>.</h2>
+        <h2 className="text-4xl leading-tight sm:text-5xl md:text-6xl">Let’s talk about your <em className="text-cherry">dream</em></h2>
         <p className="mt-4 md:mt-5 w-full max-w-xl text-base text-muted-foreground sm:text-lg md:text-xl">Ask our admissions team about courses, schedules and special offers.</p>
         <div className="mt-6 md:mt-8 flex w-full flex-col gap-3 sm:flex-row">
           <Button asChild className="h-12 w-full md:text-lg bg-cta text-primary-foreground hover:bg-cherry sm:w-auto">
@@ -492,7 +492,7 @@ function FinalCTA() {
       {/* Positioned toward the bottom so the ACTVERSE ACADEMY banner & central figure stay clear */}
       <Reveal className="relative z-10 mx-auto mt-auto w-full max-w-5xl px-5 pb-8 pt-16 text-center sm:px-8 sm:pb-10 md:pb-12">
         <h2 className="text-3xl leading-[1.02] tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.85)] sm:text-5xl md:text-6xl lg:text-7xl">
-          Lights. Camera. <em className="text-champagne">Enrol.</em>
+          Lights | Camera | <em className="text-champagne">Enrol</em>
         </h2>
       </Reveal>
 

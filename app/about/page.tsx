@@ -120,7 +120,7 @@ export default async function AboutPage() {
             <Reveal className="max-w-full">
               {/* <Label n="03" t="The Mentors" tone="text-cherry" /> */}
               <h2 className="mt-3 text-3xl leading-tight sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
-                Guidance from the <span className="text-gold-deep">Industry</span>.
+                Guidance from the <span className="text-gold-deep">Industry</span>
               </h2>
             </Reveal>
 
@@ -210,7 +210,7 @@ export default async function AboutPage() {
             <Reveal>
               {/* <Label n="04" t="Visit Us" tone="text-champagne" /> */}
               <h2 className="mt-3 text-3xl leading-tight sm:mt-4 sm:text-4xl md:text-5xl lg:text-6xl">
-                Find your <em className="text-champagne">stage</em>.
+                Find your <em className="text-champagne">stage</em>
               </h2>
             </Reveal>
 

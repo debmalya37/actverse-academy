@@ -66,7 +66,7 @@ export default async function ContactPage() {
         <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
           <p className="label-mono text-champagne">Admissions · Contact Us</p>
           <h1 className="mt-3 max-w-3xl text-3xl leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl">
-            Let’s talk about your <em>dream</em>.
+            Let’s talk about your <em>dream</em>
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-bone/90 sm:text-lg md:mt-6">
             Fill out the enquiry form below or reach out to our admissions desk
